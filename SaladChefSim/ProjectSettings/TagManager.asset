@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Vegetable
+  - Trash
+  - Plate
+  - Customer
+  - Chopping
   layers:
   - Default
   - TransparentFX
@@ -11,11 +16,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Vegetable
+  - Plate
+  - Customer
+  - Chopping
+  - Trash
   - 
   - 
   - 

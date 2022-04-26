@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 2946641706470225853}
   - component: {fileID: 607190835598376063}
   - component: {fileID: 2217593556741823021}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vegetable Two
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 8105711150879412489}
   - component: {fileID: 7203765301590331164}
   - component: {fileID: 8997700658823010520}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vegetable Three
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 7039109174827695733}
   - component: {fileID: 4112929491159324181}
   - component: {fileID: 2627187629015631959}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vegetable One
   m_TagString: Untagged
   m_Icon: {fileID: 0}
