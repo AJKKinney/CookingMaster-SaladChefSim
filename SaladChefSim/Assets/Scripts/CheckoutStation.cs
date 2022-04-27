@@ -13,6 +13,7 @@ public class CheckoutStation : MonoBehaviour
     private float timer;
     readonly private float timerLow = 12f;
     readonly private float timerHigh = 40f;
+    private float customerMaxWaitTime;
     [HideInInspector]
     public int[] desiredMixture;
     private CustomerGenerator customerGenerator;
@@ -56,12 +57,14 @@ public class CheckoutStation : MonoBehaviour
             customerGFX.SetActive(true);
             customerWaiting = true;
             timer = Random.Range(timerLow, timerHigh);
+            customerMaxWaitTime = timer;
         }
     }
 
 
     //Checks the salad given to the customer to see if it matches their preferences.
-    public bool ServeCustomer(Mixture salad)
+    //returns true if the customer was served with more than 70% time remaining
+    public bool ServeCustomer(Mixture salad, int server)
     {
         int[] servedMixture = new int[6];
 
@@ -99,13 +102,17 @@ public class CheckoutStation : MonoBehaviour
         {
             Debug.Log("You Correctly Served the Customer " + salad.GetName());
             customerGFX.SetActive(false);
-            return true;
+            ScoreTracker.instance.AddPoints(ScoreTracker.instance.basePointsAwarded, server);
+            if (timer >= customerMaxWaitTime * 0.7f)
+            {
+                return true;
+            }
         }
         else
         {
             Debug.Log("You Incorrectly Served the Customer " + salad.GetName());
-            customerGFX.SetActive(false);
-            return false;
+            timer *= 1 - ScoreTracker.instance.penaltyForWrongSalad;
         }
+        return false;
     }
 }

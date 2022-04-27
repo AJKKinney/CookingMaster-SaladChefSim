@@ -10,7 +10,9 @@ public class GameTimer : MonoBehaviour
     public float gameLength = 120f;
     readonly private float countdown = 3f;
     [HideInInspector]
-    public float timeRemaining;
+    public float playerOneTimeRemaining;
+    [HideInInspector]
+    public float playerTwoTimeRemaining;
 
     private bool started = false;
 
@@ -30,32 +32,60 @@ public class GameTimer : MonoBehaviour
             Destroy(this);
         }
 
-        timeRemaining = gameLength + countdown;
+        //lock players for countdown
+        LockPlayer(1);
+        LockPlayer(2);
+
+
+        //set timer
+        playerOneTimeRemaining = gameLength + countdown;
+        playerTwoTimeRemaining = playerOneTimeRemaining;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime;
-        }
+        Tick();
 
-        if (timeRemaining > 0 && timeRemaining < gameLength)
+        if (playerOneTimeRemaining > 0 && playerOneTimeRemaining < gameLength)
         {
             UnlockPlayers();
 
         }
+    }
+
+    //runs timer for players
+    private void Tick()
+    {
+        if (playerOneTimeRemaining > 0)
+        {
+            playerOneTimeRemaining -= Time.deltaTime;
+        }
         else
         {
-            LockPlayers();
+            LockPlayer(1);
+        }
+
+        if (playerTwoTimeRemaining > 0)
+        {
+            playerTwoTimeRemaining -= Time.deltaTime;
+        }
+        else
+        {
+            LockPlayer(2);
         }
     }
 
-    private void LockPlayers()
+    private void LockPlayer(int player)
     {
-        playerOne.locked = true;
-        playerTwo.locked = true;
+        if (player == 1)
+        {
+            playerOne.locked = true;
+        }
+        else if (player == 2)
+        {
+            playerTwo.locked = true;
+        }
     }
 
     private void UnlockPlayers()

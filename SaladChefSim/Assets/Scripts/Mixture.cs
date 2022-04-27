@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Mixture
 {
-    [HideInInspector]
-    public bool salad = false;
     public readonly List<Vegetable> vegetables = new List<Vegetable>();
 
     //constructor
@@ -27,14 +25,8 @@ public class Mixture
             }
         }
 
-        if(salad == true)
-        {
-            mixtureName += "Salad";
-        }
-        else
-        {
-            mixtureName += "Mixture";
-        }
+
+        mixtureName += "Mixture";
 
         return mixtureName;
     }

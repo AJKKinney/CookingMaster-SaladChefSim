@@ -99,11 +99,9 @@ public class CarrierController : MonoBehaviour
                 {
                     Debug.Log("Threw Away " + inventory.carriedMixture.GetName());
 
-                    //remove points if salad was thrown away
-                    if(inventory.carriedMixture.salad == true)
-                    {
-                        ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForTossing, controller.id);
-                    }
+
+                    ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForTossing, controller.id);
+
                     inventory.DropMixture();
                 }
             }
@@ -115,18 +113,11 @@ public class CarrierController : MonoBehaviour
                 //Serve customer carried salad
                 if (inventory.carriedMixture != null)
                 {
-                    if(inventory.carriedMixture.salad == true && checkout.customerWaiting == true)
+                    if(checkout.customerWaiting == true)
                     {
-                        //add points based on correctness and mix size
-                        int mixSize = inventory.carriedMixture.vegetables.Count;
-
-                        if(checkout.ServeCustomer(inventory.carriedMixture) == true)
+                        if(checkout.ServeCustomer(inventory.carriedMixture, controller.id) == true)
                         {
-                            ScoreTracker.instance.AddPoints(ScoreTracker.instance.basePointsAwarded + ScoreTracker.instance.additionalPerVeg * mixSize, controller.id);
-                        }
-                        else
-                        {
-                            ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForWrongSalad, controller.id);
+                            //drop a pickup at random
                         }
                         inventory.DropMixture();
                     }

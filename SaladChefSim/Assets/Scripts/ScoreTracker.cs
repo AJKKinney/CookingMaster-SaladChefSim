@@ -20,7 +20,7 @@ public class ScoreTracker : MonoBehaviour
     readonly public int basePointsAwarded = 10;
     readonly public int additionalPerVeg = 10;
     readonly public int penaltyForTossing = -20;
-    readonly public int penaltyForWrongSalad = -30;
+    readonly public float penaltyForWrongSalad = 0.2f;
 
 
     //initialization
