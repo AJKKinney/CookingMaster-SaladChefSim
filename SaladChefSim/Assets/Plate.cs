@@ -37,6 +37,7 @@ public class Plate : MonoBehaviour
             }
 
             Debug.Log("Added " + mixture.GetName() + " to the Empty Plate.");
+            mixture.salad = true;
             currentMixture = mixture;
         }
         else

@@ -39,11 +39,16 @@ public class ChoppingLocation : MonoBehaviour
     }
 
     //Start Chopping Vegetable
-    public void ChopVegetable(Vegetable veggie)
+    public bool ChopVegetable(Vegetable veggie)
     {
-        owner.locked = true;
-        choppingVegetable = veggie;
-        chopTime = veggie.chopTime;
+        if (chopTime <= 0)
+        {
+            owner.locked = true;
+            choppingVegetable = veggie;
+            chopTime = veggie.chopTime;
+            return true;
+        }
+        return false;
     }
 
     public void RemoveMixture()

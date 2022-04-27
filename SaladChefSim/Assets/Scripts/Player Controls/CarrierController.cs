@@ -101,11 +101,14 @@ public class CarrierController : MonoBehaviour
             //Customer Interaction
             else if (hit.transform.CompareTag("Customer"))
             {
+                CheckoutStation checkout = hit.collider.gameObject.GetComponent<CheckoutStation>();
+
                 //Serve customer carried salad
-                if(inventory.carriedMixture != null)
+                if (inventory.carriedMixture != null)
                 {
-                    if(inventory.carriedMixture.salad == true)
+                    if(inventory.carriedMixture.salad == true && checkout.customerWaiting == true)
                     {
+                        checkout.ServeCustomer(inventory.carriedMixture);
                         inventory.DropMixture();
                     }
                 }
@@ -118,8 +121,10 @@ public class CarrierController : MonoBehaviour
                 //chop veggies on cutting board
                 if (inventory.carriedVegetables[0] != null)
                 {
-                    ChopVegetable(choppingLocation);
-                    inventory.DropVegetable();
+                    if (ChopVegetable(choppingLocation))
+                    {
+                        inventory.DropVegetable();
+                    }
                 }
                 //pickup mixture if hands are empty
                 else if(inventory.carriedMixture == null && choppingLocation.currentMixture != null)
@@ -139,12 +144,14 @@ public class CarrierController : MonoBehaviour
     }
 
     //chop veggies at chop location
-    public void ChopVegetable(ChoppingLocation choppingLocation)
+    public bool ChopVegetable(ChoppingLocation choppingLocation)
     {
         if (choppingLocation.owner == controller)
         {
-            choppingLocation.ChopVegetable(inventory.carriedVegetables[0]);
+            return choppingLocation.ChopVegetable(inventory.carriedVegetables[0]);
         }
+
+        return false;
     }
 
 
