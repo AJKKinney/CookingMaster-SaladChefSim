@@ -17,9 +17,12 @@ public class CheckoutStation : MonoBehaviour
     public int[] desiredMixture;
     private CustomerGenerator customerGenerator;
 
+
     [Header("Customers")]
     public GameObject customerGFX;
     public bool startingCustomer = false;
+
+
 
     private void Awake()
     {
@@ -58,7 +61,7 @@ public class CheckoutStation : MonoBehaviour
 
 
     //Checks the salad given to the customer to see if it matches their preferences.
-    public void ServeCustomer(Mixture salad)
+    public bool ServeCustomer(Mixture salad)
     {
         int[] servedMixture = new int[6];
 
@@ -91,15 +94,18 @@ public class CheckoutStation : MonoBehaviour
             }
         }
 
+
         if(servedMixture == desiredMixture)
         {
             Debug.Log("You Correctly Served the Customer " + salad.GetName());
+            customerGFX.SetActive(false);
+            return true;
         }
         else
         {
             Debug.Log("You Incorrectly Served the Customer " + salad.GetName());
+            customerGFX.SetActive(false);
+            return false;
         }
-
-        customerGFX.SetActive(false);
     }
 }

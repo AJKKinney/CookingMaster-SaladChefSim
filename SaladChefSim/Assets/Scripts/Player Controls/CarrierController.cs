@@ -31,9 +31,12 @@ public class CarrierController : MonoBehaviour
     //Check for Interaction Keys
     void Update()
     {
-        if(playerControls.PlayerOneActions.Interact.WasPressedThisFrame() || playerControls.PlayerTwoActions.Interact.WasPressedThisFrame())
+        if (controller.locked == false)
         {
-            Interact();
+            if (playerControls.PlayerOneActions.Interact.WasPressedThisFrame() || playerControls.PlayerTwoActions.Interact.WasPressedThisFrame())
+            {
+                Interact();
+            }
         }
     }
 
@@ -95,6 +98,12 @@ public class CarrierController : MonoBehaviour
                 else if(inventory.carriedMixture != null)
                 {
                     Debug.Log("Threw Away " + inventory.carriedMixture.GetName());
+
+                    //remove points if salad was thrown away
+                    if(inventory.carriedMixture.salad == true)
+                    {
+                        ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForTossing, controller.id);
+                    }
                     inventory.DropMixture();
                 }
             }
@@ -108,7 +117,17 @@ public class CarrierController : MonoBehaviour
                 {
                     if(inventory.carriedMixture.salad == true && checkout.customerWaiting == true)
                     {
-                        checkout.ServeCustomer(inventory.carriedMixture);
+                        //add points based on correctness and mix size
+                        int mixSize = inventory.carriedMixture.vegetables.Count;
+
+                        if(checkout.ServeCustomer(inventory.carriedMixture) == true)
+                        {
+                            ScoreTracker.instance.AddPoints(ScoreTracker.instance.basePointsAwarded + ScoreTracker.instance.additionalPerVeg * mixSize, controller.id);
+                        }
+                        else
+                        {
+                            ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForWrongSalad, controller.id);
+                        }
                         inventory.DropMixture();
                     }
                 }
@@ -126,8 +145,8 @@ public class CarrierController : MonoBehaviour
                         inventory.DropVegetable();
                     }
                 }
-                //pickup mixture if hands are empty
-                else if(inventory.carriedMixture == null && choppingLocation.currentMixture != null)
+                //pickup mixture if hands are empty and not chopping
+                else if(inventory.carriedMixture == null && choppingLocation.currentMixture != null && choppingLocation.choppingVegetable == null)
                 {
                     inventory.GrabMixture(choppingLocation.currentMixture);
                     choppingLocation.RemoveMixture();

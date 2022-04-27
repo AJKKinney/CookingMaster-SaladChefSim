@@ -1,0 +1,69 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class ScoreTracker : MonoBehaviour
+{
+
+    public static ScoreTracker instance;
+
+    private int playerOneScore = 0;
+    private int playerTwoScore = 0;
+
+    [Header("Scoreboard")]
+
+    public TextMeshProUGUI playerOneScoreboard;
+    public TextMeshProUGUI playerTwoScoreboard;
+
+    [Header("Scoring")]
+    readonly public int basePointsAwarded = 10;
+    readonly public int additionalPerVeg = 10;
+    readonly public int penaltyForTossing = -20;
+    readonly public int penaltyForWrongSalad = -30;
+
+
+    //initialization
+    void Awake()
+    {
+        instance = this;
+    }
+
+    //Gets The Score of a Player
+    public int getScore(int player)
+    {
+        if (player == 1)
+        {
+            return playerOneScore;
+        }
+        else if(player == 2)
+        {
+            return playerTwoScore;
+        }
+
+        return 0;
+    }
+
+    //adds points for the player to the scoreboard
+    public void AddPoints(int points, int player)
+    {
+        if (player == 1)
+        {
+            playerOneScore += points;
+        }
+        else if (player == 2)
+        {
+            playerTwoScore += points;
+        }
+
+        UpdateUI();
+    }
+
+    //updates the scoreboard UI
+    public void UpdateUI()
+    {
+        playerOneScoreboard.text = playerOneScore.ToString();
+        playerTwoScoreboard.text = playerTwoScore.ToString();
+    }
+
+}

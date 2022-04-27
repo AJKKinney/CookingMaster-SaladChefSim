@@ -13,6 +13,9 @@ public class PlayerMovementController : MonoBehaviour
     internal PlayerControls playerControls;
     internal Vector3 moveVector;
     [HideInInspector]
+    public int id = 0;
+
+    [HideInInspector]
     public bool locked = false;
 
     [Header("Player Movement")]

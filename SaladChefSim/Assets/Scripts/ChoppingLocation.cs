@@ -6,7 +6,8 @@ public class ChoppingLocation : MonoBehaviour
 {
     [HideInInspector]
     public Mixture currentMixture;
-    private Vegetable choppingVegetable;
+    [HideInInspector]
+    public Vegetable choppingVegetable;
     private float chopTime;
 
     public PlayerMovementController owner;

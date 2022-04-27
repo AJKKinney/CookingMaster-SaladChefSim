@@ -9,6 +9,7 @@ public class PlayerOneMovementController : PlayerMovementController
     {
         base.EnableControls();
         playerControls.PlayerOneActions.Enable();
+        this.id = 1;
     }
 
     // Update is called once per frame

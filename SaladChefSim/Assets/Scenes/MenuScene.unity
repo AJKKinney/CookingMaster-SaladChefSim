@@ -5425,7 +5425,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1133218096}
-        m_MethodName: BeginLoad
+        m_MethodName: BeginLoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

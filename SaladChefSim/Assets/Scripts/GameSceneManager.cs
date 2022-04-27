@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 
 //handles launching game and quitting
-public class StartGameUI : MonoBehaviour
+public class GameSceneManager : MonoBehaviour
 {
     [Header("Scene Loading Settings")]
     public Image loadingPanel;
@@ -36,10 +36,10 @@ public class StartGameUI : MonoBehaviour
     }
 
     //starts the async loading operation
-    public void BeginLoad()
+    public void BeginLoadGame()
     {
         loadingPanel.gameObject.SetActive(true);
-        loading = SceneManager.LoadSceneAsync("MainScene");
+        loading = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainScene");
 
         //hold the scene until activation
         loading.allowSceneActivation = false;
@@ -50,5 +50,11 @@ public class StartGameUI : MonoBehaviour
     {
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    public void ReturnToMenu()
+    {
+        loadingPanel.gameObject.SetActive(true);
+        loading = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MenuScene");
     }
 }
