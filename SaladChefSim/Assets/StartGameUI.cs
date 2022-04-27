@@ -5,23 +5,19 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class MainMenuUI : MonoBehaviour
+
+//handles launching game and quitting
+public class StartGameUI : MonoBehaviour
 {
     [Header("Scene Loading Settings")]
     public Image loadingPanel;
     public Slider loadingBar;
 
-    private bool launch = false;
     AsyncOperation loading;
 
     // Update is called once per frame
     void Update()
     {
-        //loads the game
-        if (launch)
-        {
-            BeginLoad();
-        }
 
         //loading update loop
         if (loading != null)
@@ -39,12 +35,6 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
-    //Launch Game
-    public void StartGame()
-    {
-        launch = true;
-    }
-
     //starts the async loading operation
     public void BeginLoad()
     {
@@ -53,6 +43,12 @@ public class MainMenuUI : MonoBehaviour
 
         //hold the scene until activation
         loading.allowSceneActivation = false;
-        launch = false;
+    }
+
+    //Quits games
+    public void QuitGame()
+    {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

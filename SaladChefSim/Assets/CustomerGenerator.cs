@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Class for generating customer preferences
 public class CustomerGenerator : MonoBehaviour
 {
     readonly private int minIngredients = 2;

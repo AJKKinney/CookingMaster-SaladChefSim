@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//The Checkout Station is the class that handles customers
+//players bring salads to the checkout stations in order to serve the customers
+//The checkout station also determines if a customer is waiting
 [RequireComponent(typeof(CustomerGenerator))]
 public class CheckoutStation : MonoBehaviour
 {
@@ -33,6 +36,7 @@ public class CheckoutStation : MonoBehaviour
 
     private void Update()
     {
+        //timing for new customers
         if(timer > 0)
         {
             timer -= Time.deltaTime;
@@ -52,6 +56,8 @@ public class CheckoutStation : MonoBehaviour
         }
     }
 
+
+    //Checks the salad given to the customer to see if it matches their preferences.
     public void ServeCustomer(Mixture salad)
     {
         int[] servedMixture = new int[6];

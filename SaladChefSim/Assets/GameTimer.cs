@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Handles the game timer and ends the game when necessary
 public class GameTimer : MonoBehaviour
 {
 
