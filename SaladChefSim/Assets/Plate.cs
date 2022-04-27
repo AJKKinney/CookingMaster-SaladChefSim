@@ -48,4 +48,9 @@ public class Plate : MonoBehaviour
             }
         }
     }
+
+    public void RemovePlate()
+    {
+        currentMixture = null;
+    }
 }

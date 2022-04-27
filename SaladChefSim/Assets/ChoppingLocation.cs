@@ -45,4 +45,9 @@ public class ChoppingLocation : MonoBehaviour
         choppingVegetable = veggie;
         chopTime = veggie.chopTime;
     }
+
+    public void RemoveMixture()
+    {
+        currentMixture = null;
+    }
 }

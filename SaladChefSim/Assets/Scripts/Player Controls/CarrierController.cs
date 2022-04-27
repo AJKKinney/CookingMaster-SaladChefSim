@@ -9,6 +9,7 @@ using UnityEngine;
 public class CarrierController : MonoBehaviour
 {
     private PlayerControls playerControls;
+    private PlayerMovementController controller;
     private PlayerInventory inventory;
 
     [Header("Pick Up Settings")]
@@ -19,6 +20,7 @@ public class CarrierController : MonoBehaviour
     void Awake()
     {
         inventory = GetComponent<PlayerInventory>();
+        controller = GetComponent<PlayerMovementController>();
     }
 
     void Start()
@@ -50,20 +52,30 @@ public class CarrierController : MonoBehaviour
             }
             else if (hit.transform.CompareTag("Plate"))
             {
-                //Store Vegetable on Plate
+                Plate plate = hit.collider.gameObject.GetComponent<Plate>();
                 if (inventory.carriedVegetables[0] != null)
                 {
-                    Plate plate = hit.collider.gameObject.GetComponent<Plate>();
+                    //Store Vegetable on Plate
                     if (plate.StoreVegetable(inventory.carriedVegetables[0]) == true)
                     {
                         inventory.DropVegetable();
                     }
+                    //if plate was full and inventory location is open pick up vegetable from plate
+                    else if (inventory.carriedVegetables[1] == null && plate.currentVegetable != null)
+                    {
+                        inventory.AddVegetable(plate.currentVegetable);
+                    }
                 }
                 //Add Mixture To Salad on Plate
-                else if(inventory.carriedMixture != null)
+                else if (inventory.carriedMixture != null)
                 {
-                    Plate plate = hit.collider.gameObject.GetComponent<Plate>();
                     plate.AddMixture(inventory.carriedMixture, inventory);
+                }
+                //pickup Salad
+                else
+                {
+                    inventory.GrabMixture(plate.currentMixture);
+                    plate.RemovePlate();
                 }
             }
             //Trash Interaction
@@ -75,6 +87,10 @@ public class CarrierController : MonoBehaviour
                     inventory.DropVegetable();
                 }
                 //Throw away carried mixture
+                else if(inventory.carriedMixture != null)
+                {
+                    inventory.DropMixture();
+                }
             }
             //Customer Interaction
             else if (hit.transform.CompareTag("Customer"))
@@ -91,11 +107,19 @@ public class CarrierController : MonoBehaviour
             //Cutting Board Interaction
             else if (hit.transform.CompareTag("Chopping"))
             {
+                ChoppingLocation choppingLocation = hit.collider.gameObject.GetComponent<ChoppingLocation>();
+
                 //chop veggies on cutting board
                 if (inventory.carriedVegetables[0] != null)
                 {
-                    ChopVegetable(hit);
+                    ChopVegetable(choppingLocation);
                     inventory.DropVegetable();
+                }
+                //pickup mixture if hands are empty
+                else if(inventory.carriedMixture == null && choppingLocation.currentMixture != null)
+                {
+                    inventory.GrabMixture(choppingLocation.currentMixture);
+                    choppingLocation.RemoveMixture();
                 }
             }
         }
@@ -109,10 +133,12 @@ public class CarrierController : MonoBehaviour
     }
 
     //chop veggies at chop location
-    public void ChopVegetable(RaycastHit hitCollider)
+    public void ChopVegetable(ChoppingLocation choppingLocation)
     {
-        ChoppingLocation choppingLocation = hitCollider.collider.gameObject.GetComponent<ChoppingLocation>();
-        choppingLocation.ChopVegetable(inventory.carriedVegetables[0]);
+        if (choppingLocation.owner == controller)
+        {
+            choppingLocation.ChopVegetable(inventory.carriedVegetables[0]);
+        }
     }
 
 
