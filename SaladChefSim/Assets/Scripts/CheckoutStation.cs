@@ -6,6 +6,7 @@ using UnityEngine;
 //players bring salads to the checkout stations in order to serve the customers
 //The checkout station also determines if a customer is waiting
 [RequireComponent(typeof(CustomerGenerator))]
+[RequireComponent(typeof(PickupGenerator))]
 public class CheckoutStation : MonoBehaviour
 {
     [HideInInspector]
@@ -17,12 +18,13 @@ public class CheckoutStation : MonoBehaviour
     [HideInInspector]
     public int[] desiredMixture;
     private CustomerGenerator customerGenerator;
+    private PickupGenerator pickupGenerator;
 
 
     [Header("Customers")]
     public GameObject customerGFX;
     public bool startingCustomer = false;
-
+    CustomerUI customerUI;
 
 
     private void Awake()
@@ -36,6 +38,7 @@ public class CheckoutStation : MonoBehaviour
         {
             timer = Random.Range(timerLow, timerHigh);
         }
+        customerUI = GetComponentInChildren<CustomerUI>();
     }
 
     private void Update()
@@ -44,6 +47,11 @@ public class CheckoutStation : MonoBehaviour
         if(timer > 0)
         {
             timer -= Time.deltaTime;
+            //update HUD for Customer
+            if (customerWaiting == true)
+            {
+                customerUI.SetTimerUI(timer, customerMaxWaitTime);
+            }
         }
         else if(customerWaiting == true)
         {
@@ -105,6 +113,7 @@ public class CheckoutStation : MonoBehaviour
             ScoreTracker.instance.AddPoints(ScoreTracker.instance.basePointsAwarded, server);
             if (timer >= customerMaxWaitTime * 0.7f)
             {
+                pickupGenerator.GeneratePickup();
                 return true;
             }
         }

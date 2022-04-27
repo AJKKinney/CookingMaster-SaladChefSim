@@ -115,10 +115,7 @@ public class CarrierController : MonoBehaviour
                 {
                     if(checkout.customerWaiting == true)
                     {
-                        if(checkout.ServeCustomer(inventory.carriedMixture, controller.id) == true)
-                        {
-                            //drop a pickup at random
-                        }
+                        checkout.ServeCustomer(inventory.carriedMixture, controller.id);
                         inventory.DropMixture();
                     }
                 }

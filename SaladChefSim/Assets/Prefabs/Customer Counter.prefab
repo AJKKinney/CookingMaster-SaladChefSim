@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2936047845455011923}
   - component: {fileID: 581896320}
   - component: {fileID: 581896323}
+  - component: {fileID: 1780523422}
   m_Layer: 0
   m_Name: Checkout Station
   m_TagString: Customer
@@ -124,6 +125,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cddf4485330e89a40b9c351e4384dc85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1780523422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326787237855265708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f30cb9ad0f54846b88699e8002a9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups:
+  - {fileID: 6332360863537725930, guid: 8b5d8740e18ae0b4db96fcd0f5328b31, type: 3}
+  - {fileID: 8466274328070802193, guid: c958ae39c949f724c81bd796f8ed3b74, type: 3}
+  - {fileID: 3912203375232842426, guid: a758bf33aebc02f4e9eb221c88f36789, type: 3}
+  size: {x: 2, y: 0, z: 5}
+  offset: {x: 0, y: -1.05, z: -3.5}
 --- !u!1 &2934456947447921260
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +157,7 @@ GameObject:
   - component: {fileID: 6705470378777639409}
   - component: {fileID: 1131142434}
   - component: {fileID: 1131142437}
+  - component: {fileID: 347501996}
   m_Layer: 0
   m_Name: Checkout Station
   m_TagString: Customer
@@ -248,6 +268,24 @@ MonoBehaviour:
   desiredMixture: 
   customerGFX: {fileID: 4801603447991726063}
   startingCustomer: 0
+--- !u!114 &347501996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934456947447921260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f30cb9ad0f54846b88699e8002a9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups:
+  - {fileID: 6332360863537725930, guid: 8b5d8740e18ae0b4db96fcd0f5328b31, type: 3}
+  - {fileID: 8466274328070802193, guid: c958ae39c949f724c81bd796f8ed3b74, type: 3}
+  - {fileID: 3912203375232842426, guid: a758bf33aebc02f4e9eb221c88f36789, type: 3}
+  size: {x: 2, y: 0, z: 5}
+  offset: {x: 0, y: -1.05, z: -3.5}
 --- !u!1 &6050118076858275140
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +300,7 @@ GameObject:
   - component: {fileID: 3708855549965770442}
   - component: {fileID: 114635249}
   - component: {fileID: 114635252}
+  - component: {fileID: 1235113184}
   m_Layer: 0
   m_Name: Checkout Station
   m_TagString: Customer
@@ -372,6 +411,24 @@ MonoBehaviour:
   desiredMixture: 
   customerGFX: {fileID: 4801603446708777156}
   startingCustomer: 0
+--- !u!114 &1235113184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6050118076858275140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f30cb9ad0f54846b88699e8002a9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups:
+  - {fileID: 6332360863537725930, guid: 8b5d8740e18ae0b4db96fcd0f5328b31, type: 3}
+  - {fileID: 8466274328070802193, guid: c958ae39c949f724c81bd796f8ed3b74, type: 3}
+  - {fileID: 3912203375232842426, guid: a758bf33aebc02f4e9eb221c88f36789, type: 3}
+  size: {x: 2, y: 0, z: 5}
+  offset: {x: 0, y: -1.05, z: -3.5}
 --- !u!1 &6343328239443685279
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +443,7 @@ GameObject:
   - component: {fileID: 2795502987330808189}
   - component: {fileID: 1026324734}
   - component: {fileID: 1026324737}
+  - component: {fileID: 1682299677}
   m_Layer: 0
   m_Name: Checkout Station
   m_TagString: Customer
@@ -496,6 +554,24 @@ MonoBehaviour:
   desiredMixture: 
   customerGFX: {fileID: 4801603446427203917}
   startingCustomer: 0
+--- !u!114 &1682299677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6343328239443685279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f30cb9ad0f54846b88699e8002a9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups:
+  - {fileID: 6332360863537725930, guid: 8b5d8740e18ae0b4db96fcd0f5328b31, type: 3}
+  - {fileID: 8466274328070802193, guid: c958ae39c949f724c81bd796f8ed3b74, type: 3}
+  - {fileID: 3912203375232842426, guid: a758bf33aebc02f4e9eb221c88f36789, type: 3}
+  size: {x: 2, y: 0, z: 5}
+  offset: {x: 0, y: -1.05, z: -3.5}
 --- !u!1 &7908314276535389199
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +586,7 @@ GameObject:
   - component: {fileID: 1206537458658288140}
   - component: {fileID: 1515854999}
   - component: {fileID: 1515855002}
+  - component: {fileID: 192085003}
   m_Layer: 0
   m_Name: Checkout Station
   m_TagString: Customer
@@ -620,6 +697,24 @@ MonoBehaviour:
   desiredMixture: 
   customerGFX: {fileID: 4801603447929443367}
   startingCustomer: 0
+--- !u!114 &192085003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7908314276535389199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f30cb9ad0f54846b88699e8002a9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups:
+  - {fileID: 6332360863537725930, guid: 8b5d8740e18ae0b4db96fcd0f5328b31, type: 3}
+  - {fileID: 8466274328070802193, guid: c958ae39c949f724c81bd796f8ed3b74, type: 3}
+  - {fileID: 3912203375232842426, guid: a758bf33aebc02f4e9eb221c88f36789, type: 3}
+  size: {x: 2, y: 0, z: 5}
+  offset: {x: 0, y: -1.05, z: -3.5}
 --- !u!1 &8217480899311947078
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +829,7 @@ GameObject:
   - component: {fileID: 2535117414212412099}
   - component: {fileID: 1571226794}
   - component: {fileID: 1571226797}
+  - component: {fileID: 1371963022}
   m_Layer: 0
   m_Name: Checkout Station
   m_TagString: Customer
@@ -844,6 +940,24 @@ MonoBehaviour:
   desiredMixture: 
   customerGFX: {fileID: 4801603448385053729}
   startingCustomer: 0
+--- !u!114 &1371963022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8365237355663901203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f30cb9ad0f54846b88699e8002a9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups:
+  - {fileID: 6332360863537725930, guid: 8b5d8740e18ae0b4db96fcd0f5328b31, type: 3}
+  - {fileID: 8466274328070802193, guid: c958ae39c949f724c81bd796f8ed3b74, type: 3}
+  - {fileID: 3912203375232842426, guid: a758bf33aebc02f4e9eb221c88f36789, type: 3}
+  size: {x: 2, y: 0, z: 5}
+  offset: {x: 0, y: -1.05, z: -3.5}
 --- !u!1 &8491339038668915338
 GameObject:
   m_ObjectHideFlags: 0
@@ -858,6 +972,7 @@ GameObject:
   - component: {fileID: 7327139084773002087}
   - component: {fileID: 1826463862}
   - component: {fileID: 1826463865}
+  - component: {fileID: 1735621446}
   m_Layer: 0
   m_Name: Checkout Station
   m_TagString: Customer
@@ -968,6 +1083,24 @@ MonoBehaviour:
   desiredMixture: 
   customerGFX: {fileID: 4801603448166524576}
   startingCustomer: 0
+--- !u!114 &1735621446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8491339038668915338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f30cb9ad0f54846b88699e8002a9cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickups:
+  - {fileID: 6332360863537725930, guid: 8b5d8740e18ae0b4db96fcd0f5328b31, type: 3}
+  - {fileID: 8466274328070802193, guid: c958ae39c949f724c81bd796f8ed3b74, type: 3}
+  - {fileID: 3912203375232842426, guid: a758bf33aebc02f4e9eb221c88f36789, type: 3}
+  size: {x: 2, y: 0, z: 5}
+  offset: {x: 0, y: -1.05, z: -3.5}
 --- !u!1001 &4801603447660977304
 PrefabInstance:
   m_ObjectHideFlags: 0

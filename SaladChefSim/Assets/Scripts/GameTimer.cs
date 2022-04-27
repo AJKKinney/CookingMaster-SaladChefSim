@@ -88,6 +88,18 @@ public class GameTimer : MonoBehaviour
         }
     }
 
+    public void AddTime(float time, int player)
+    {
+        if (player == 1)
+        {
+            playerOneTimeRemaining += time;
+        }
+        else if (player == 2)
+        {
+            playerTwoTimeRemaining += time;
+        }
+    }
+
     private void UnlockPlayers()
     {
         playerOne.locked = false;
