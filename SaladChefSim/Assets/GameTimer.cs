@@ -7,7 +7,7 @@ public class GameTimer : MonoBehaviour
 
     static public GameTimer instance;
     public float gameLength = 120f;
-    private float countdown = 3f;
+    readonly private float countdown = 3f;
     [HideInInspector]
     public float timeRemaining;
 

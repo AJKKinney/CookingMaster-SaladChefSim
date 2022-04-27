@@ -53,7 +53,16 @@ public class CarrierController : MonoBehaviour
             else if (hit.transform.CompareTag("Plate"))
             {
                 Plate plate = hit.collider.gameObject.GetComponent<Plate>();
-                if (inventory.carriedVegetables[0] != null)
+
+                //pickup plate
+                if(inventory.carriedVegetables[0] == null && inventory.carriedMixture == null)
+                {
+                    if (inventory.GrabMixture(plate.currentMixture) == true)
+                    {
+                        plate.RemovePlate();
+                    }
+                }
+                else if (inventory.carriedVegetables[0] != null)
                 {
                     //Store Vegetable on Plate
                     if (plate.StoreVegetable(inventory.carriedVegetables[0]) == true)
@@ -70,12 +79,7 @@ public class CarrierController : MonoBehaviour
                 else if (inventory.carriedMixture != null)
                 {
                     plate.AddMixture(inventory.carriedMixture, inventory);
-                }
-                //pickup Salad
-                else
-                {
-                    inventory.GrabMixture(plate.currentMixture);
-                    plate.RemovePlate();
+                    inventory.DropMixture();
                 }
             }
             //Trash Interaction
@@ -84,11 +88,13 @@ public class CarrierController : MonoBehaviour
                 //Throw away carried vegetables
                 if (inventory.carriedVegetables[0] != null)
                 {
+                    Debug.Log("Threw Away " + inventory.carriedVegetables[0].GetName());
                     inventory.DropVegetable();
                 }
                 //Throw away carried mixture
                 else if(inventory.carriedMixture != null)
                 {
+                    Debug.Log("Threw Away " + inventory.carriedMixture.GetName());
                     inventory.DropMixture();
                 }
             }
