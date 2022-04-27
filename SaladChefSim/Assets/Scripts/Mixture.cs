@@ -2,18 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mixture : MonoBehaviour
+public class Mixture
 {
     [HideInInspector]
-    public bool salad;
+    public bool salad = false;
     public readonly List<Vegetable> vegetables = new List<Vegetable>();
+
+    //constructor
+    public Mixture(Vegetable veggie)
+    {
+        this.AddVeggie(veggie);
+    }
 
     //generate Mixture name
     public virtual string GetName()
     {
         string mixtureName = "";
 
-        for(int i = 0; i < vegetables.Count - 1; i++)
+        for(int i = 0; i < vegetables.Count; i++)
         {
             if(vegetables[i] != null)
             {

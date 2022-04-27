@@ -5,8 +5,6 @@ using UnityEngine;
 //Base class for vegetables
 public class Vegetable : MonoBehaviour
 {
-    [HideInInspector]
-    public bool chopped;
     public float chopTime { get; set; } = 1;
 
 
