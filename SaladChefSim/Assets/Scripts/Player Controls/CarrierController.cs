@@ -133,6 +133,13 @@ public class CarrierController : MonoBehaviour
                         inventory.DropVegetable();
                     }
                 }
+                //put mixture on cutting board
+                else if(inventory.carriedMixture != null)
+                {
+                    Debug.Log("Placed " + inventory.carriedMixture.GetName() + "On Cutting Board");
+                    choppingLocation.PlaceMixture(inventory.carriedMixture);
+                    inventory.DropMixture();
+                }
                 //pickup mixture if hands are empty and not chopping
                 else if(inventory.carriedMixture == null && choppingLocation.currentMixture != null && choppingLocation.choppingVegetable == null)
                 {

@@ -18,7 +18,7 @@ public class CheckoutStation : MonoBehaviour
     [HideInInspector]
     public int[] desiredMixture;
     private CustomerGenerator customerGenerator;
-    private PickupGenerator pickupGenerator;
+    readonly private PickupGenerator pickupGenerator;
 
 
     [Header("Customers")]
@@ -62,6 +62,7 @@ public class CheckoutStation : MonoBehaviour
         else
         {
             desiredMixture = customerGenerator.GenerateCustomer();
+            customerUI.UpdateDesires(desiredMixture);
             customerGFX.SetActive(true);
             customerWaiting = true;
             timer = Random.Range(timerLow, timerHigh);
@@ -105,8 +106,21 @@ public class CheckoutStation : MonoBehaviour
             }
         }
 
+        //check mixture
+        bool correctSalad = true;
 
-        if(servedMixture == desiredMixture)
+        for(int i = 0; i < servedMixture.Length; i++)
+        {
+            Debug.Log("served " + servedMixture[i].ToString());
+            Debug.Log("desired " + desiredMixture[i].ToString());
+            if(servedMixture[i] != desiredMixture[i])
+            {
+                correctSalad = false;
+            }
+        }
+
+        //serve mixture
+        if (correctSalad == true)
         {
             Debug.Log("You Correctly Served the Customer " + salad.GetName());
             customerGFX.SetActive(false);

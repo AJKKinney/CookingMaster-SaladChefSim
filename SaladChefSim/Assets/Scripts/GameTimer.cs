@@ -14,8 +14,6 @@ public class GameTimer : MonoBehaviour
     [HideInInspector]
     public float playerTwoTimeRemaining;
 
-    private bool started = false;
-
     [Header("Players")]
     public PlayerMovementController playerOne;
     public PlayerMovementController playerTwo;

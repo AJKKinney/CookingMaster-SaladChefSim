@@ -12,18 +12,26 @@ public class PlayerInventory : MonoBehaviour
     //add a veggie to your inventory
     public bool AddVegetable(Vegetable veggie)
     {
-
-        for(int i = 0; i < carriedVegetables.Length; i++)
+        if (carriedMixture == null)
         {
-            if(carriedVegetables[i] == null)
+            for (int i = 0; i < carriedVegetables.Length; i++)
             {
-                Debug.Log("Picked up " + veggie.GetName());
-                carriedVegetables[i] = veggie.Grab();
-                return true;
+                if (carriedVegetables[i] == null)
+                {
+                    Debug.Log("Picked up " + veggie.GetName());
+                    carriedVegetables[i] = veggie.Grab();
+                    return true;
+                }
             }
+
+            Debug.Log("Inventory is Full");
+
+        }
+        else
+        {
+            Debug.Log("Already Carrying a Mixture");
         }
 
-        Debug.Log("Inventory is Full");
         return false;
     }
 

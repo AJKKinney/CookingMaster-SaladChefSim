@@ -56,4 +56,9 @@ public class ChoppingLocation : MonoBehaviour
     {
         currentMixture = null;
     }
+
+    public void PlaceMixture(Mixture mixture)
+    {
+        currentMixture = mixture;
+    }
 }

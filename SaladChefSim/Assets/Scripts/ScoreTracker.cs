@@ -17,7 +17,7 @@ public class ScoreTracker : MonoBehaviour
     public TextMeshProUGUI playerTwoScoreboard;
 
     [Header("Scoring")]
-    readonly public int basePointsAwarded = 10;
+    readonly public int basePointsAwarded = 30;
     readonly public int additionalPerVeg = 10;
     readonly public int penaltyForTossing = -20;
     readonly public float penaltyForWrongSalad = 0.2f;

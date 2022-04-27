@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    Collider collider;
+    Collider pickupCollider;
     public GameObject powerupGFX;
     PlayerMovementController pickerUpper;
     internal bool pickedUp = false;
@@ -12,7 +12,7 @@ public class Pickup : MonoBehaviour
     //initialize
     private void Awake()
     {
-        collider = GetComponent<Collider>();
+        pickupCollider = GetComponent<Collider>();
     }
 
     //when player enters collider trigger
@@ -33,7 +33,7 @@ public class Pickup : MonoBehaviour
         //disable collider and gfx for ability to work
 
         powerupGFX.SetActive(false);
-        collider.enabled = false;
+        pickupCollider.enabled = false;
         pickedUp = true;
     }
 }
