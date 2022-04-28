@@ -7302,6 +7302,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1038930621}
     m_Modifications:
+    - target: {fileID: -9210109716556531281, guid: 894f03f502141cf44b55d06b37db7550,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 894f03f502141cf44b55d06b37db7550,
         type: 3}
       propertyPath: m_RootOrder
@@ -7345,17 +7350,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 894f03f502141cf44b55d06b37db7550,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 894f03f502141cf44b55d06b37db7550,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 894f03f502141cf44b55d06b37db7550,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 894f03f502141cf44b55d06b37db7550,
         type: 3}
@@ -7372,10 +7377,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3181452503744645242, guid: 894f03f502141cf44b55d06b37db7550,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -23806217948304301, guid: 894f03f502141cf44b55d06b37db7550,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 372840ab473b8544785a8b7e57327046, type: 2}
     - target: {fileID: 919132149155446097, guid: 894f03f502141cf44b55d06b37db7550,
         type: 3}
       propertyPath: m_Name
       value: Toast Guy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831018558786363571, guid: 894f03f502141cf44b55d06b37db7550,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 894f03f502141cf44b55d06b37db7550, type: 3}
@@ -11589,6 +11609,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Banana Guy
       objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 55b3fdeaeb8f6214f9d94cef4c04e617,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ed8537098cd99dc4d8dc9fe2f2df79c7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55b3fdeaeb8f6214f9d94cef4c04e617, type: 3}
 --- !u!1 &2079388340 stripped
