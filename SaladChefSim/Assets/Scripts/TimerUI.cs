@@ -4,16 +4,21 @@ using UnityEngine;
 using TMPro;
 
 //Sets timer text to match time remaining
+
+//
+[RequireComponent(typeof(WinScreenController))]
 public class TimerUI : MonoBehaviour
 {
-    [Header("UI Elements")]
+    [Header("HUD Elements")]
     public TextMeshProUGUI playerOneTimer;
     public TextMeshProUGUI playerTwoTimer;
     public TextMeshProUGUI countdownNumbers;
-    public GameObject playerOneWinScreen;
-    public GameObject playerTwoWinScreen;
-    public GameObject tiedWinScreen;
     public GameObject gameHUD;
+
+    private WinScreenController winScreen;
+
+    private bool winner = false;
+
 
     //Create Coundown Numbers
     void Awake()
@@ -21,6 +26,9 @@ public class TimerUI : MonoBehaviour
         GameObject newNumbers = Instantiate(countdownNumbers.gameObject, countdownNumbers.transform.parent);
         countdownNumbers = newNumbers.GetComponent<TextMeshProUGUI>();
         countdownNumbers.gameObject.SetActive(true);
+
+        //get win screen controller
+        winScreen = GetComponent<WinScreenController>();
     }
 
     //set start time
@@ -33,29 +41,19 @@ public class TimerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        UITick();
-
-        //End Game Screen
-        if(GameTimer.instance.playerOneTimeRemaining <= 0 && GameTimer.instance.playerTwoTimeRemaining <= 0)
+        //only run so long as a winner has not been declared
+        if (winner == false)
         {
-            if (ScoreTracker.instance.getScore(1) > ScoreTracker.instance.getScore(2))
-            {
-                Debug.Log("Player One Wins");
-                playerOneWinScreen.SetActive(true);
-            }
-            else if (ScoreTracker.instance.getScore(1) < ScoreTracker.instance.getScore(2))
-            {
-                Debug.Log("Player Two Wins");
-                playerTwoWinScreen.SetActive(true);
-            }
-            else
-            {
-                Debug.Log("The Players Tied");
-                tiedWinScreen.SetActive(true);
-            }
+            UITick();
 
-            gameHUD.SetActive(false);
+            //End Game Screen
+            if (GameTimer.instance.playerOneTimeRemaining <= 0 && GameTimer.instance.playerTwoTimeRemaining <= 0)
+            {
+
+                gameHUD.SetActive(false);
+                winScreen.DeclareWinner();
+                winner = true;
+            }
         }
     }
 
