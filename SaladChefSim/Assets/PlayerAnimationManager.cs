@@ -11,7 +11,14 @@ public class PlayerAnimationManager : MonoBehaviour
     public void SetWalkSpeed(float speed)
     {
         playerAnimator.SetFloat("MoveSpeed", speed);
-        playerAnimator.speed = speed;
+        if (speed > 0.1f)
+        {
+            playerAnimator.speed = speed;
+        }
+        else
+        {
+            playerAnimator.speed = 1;
+        }
     }
 
 }

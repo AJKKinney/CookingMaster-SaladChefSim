@@ -52,6 +52,10 @@ public class PlayerMovementController : MonoBehaviour
                 animationManager.SetWalkSpeed(playerRigidbody.velocity.magnitude / 2f);
             }
         }
+        else
+        {
+            animationManager.SetWalkSpeed(0);
+        }
 
 
     }

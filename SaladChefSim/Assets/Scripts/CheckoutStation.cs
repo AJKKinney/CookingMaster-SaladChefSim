@@ -24,7 +24,7 @@ public class CheckoutStation : MonoBehaviour
 
 
     [Header("Customers")]
-    readonly private float baseWaitTime = 30;
+    readonly private float baseWaitTime = 35f;
     readonly private float timePerVeg = 10f;
     public GameObject customerGFX;
     public bool startingCustomer = false;
@@ -62,7 +62,19 @@ public class CheckoutStation : MonoBehaviour
         {
             customerGFX.SetActive(false);
             customerWaiting = false;
-            timeMod = 1f;
+
+            //reduce points for both players
+            ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver, 1);
+            ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver, 2);
+
+            if (timeMod > 1f)
+            {
+                timeMod = 1f;
+                //reduce points for both players for angry customer
+                ScoreTracker.instance.AddPoints(ScoreTracker.instance.additionalForAngry, 1);
+                ScoreTracker.instance.AddPoints(ScoreTracker.instance.additionalForAngry, 2);
+            }
+
             timer = Random.Range(timerLow, timerHigh);
         }
         else
@@ -133,6 +145,8 @@ public class CheckoutStation : MonoBehaviour
             //award points for correct dish
             Debug.Log("You Correctly Served the Customer " + salad.GetName());
             customerGFX.SetActive(false);
+            //customer no longer waiting
+            customerWaiting = false;
             ScoreTracker.instance.AddPoints(ScoreTracker.instance.basePointsAwarded, server);
             //powerup if >%70 time remaining
             if (timer >= customerMaxWaitTime * 0.7f)
