@@ -16,7 +16,7 @@ public class CustomerGenerator : MonoBehaviour
 
         for(int i = 0; i < numIngredients; i++)
         {
-            int ingredient = Mathf.RoundToInt(Random.Range(0, 5));
+            int ingredient = Mathf.RoundToInt(Random.Range(0, 6));
             customerOrder[ingredient] += 1;
         }
 
