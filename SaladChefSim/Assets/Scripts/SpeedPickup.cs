@@ -6,7 +6,7 @@ public class SpeedPickup : Pickup
 {
 
     private float timer;
-    readonly private float duration = 30f;
+    readonly private float duration = 10f;
     private PlayerMovementController targetPlayer;
 
     private void Update()

@@ -13,4 +13,10 @@ public class Spinach : Vegetable
     {
         return "Spinach";
     }
+
+
+    public override int GetID()
+    {
+        return 1;
+    }
 }

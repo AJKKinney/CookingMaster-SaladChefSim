@@ -14,6 +14,8 @@ public class CheckoutStation : MonoBehaviour
     private float timer;
     readonly private float timerLow = 12f;
     readonly private float timerHigh = 40f;
+    private float timeMod = 1f;
+    readonly private float customerWaitPenalty = 0.5f;
     private float customerMaxWaitTime;
     [HideInInspector]
     public int[] desiredMixture;
@@ -49,7 +51,7 @@ public class CheckoutStation : MonoBehaviour
         //timing for new customers
         if(timer > 0)
         {
-            timer -= Time.deltaTime;
+            timer -= Time.deltaTime * timeMod;
             //update HUD for Customer
             if (customerWaiting == true)
             {
@@ -60,6 +62,7 @@ public class CheckoutStation : MonoBehaviour
         {
             customerGFX.SetActive(false);
             customerWaiting = false;
+            timeMod = 1f;
             timer = Random.Range(timerLow, timerHigh);
         }
         else
@@ -127,9 +130,11 @@ public class CheckoutStation : MonoBehaviour
         //serve mixture
         if (correctSalad == true)
         {
+            //award points for correct dish
             Debug.Log("You Correctly Served the Customer " + salad.GetName());
             customerGFX.SetActive(false);
             ScoreTracker.instance.AddPoints(ScoreTracker.instance.basePointsAwarded, server);
+            //powerup if >%70 time remaining
             if (timer >= customerMaxWaitTime * 0.7f)
             {
                 Debug.Log("You generated a pickup!");
@@ -139,8 +144,9 @@ public class CheckoutStation : MonoBehaviour
         }
         else
         {
+            //increase tick speed for incorrect dish
             Debug.Log("You Incorrectly Served the Customer " + salad.GetName());
-            timer *= 1 - ScoreTracker.instance.penaltyForWrongSalad;
+            timeMod += customerWaitPenalty;
         }
         return false;
     }

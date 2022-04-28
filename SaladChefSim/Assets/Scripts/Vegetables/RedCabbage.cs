@@ -14,4 +14,10 @@ public class RedCabbage : Vegetable
     {
         return "Red Cabbage";
     }
+
+
+    public override int GetID()
+    {
+        return 4;
+    }
 }

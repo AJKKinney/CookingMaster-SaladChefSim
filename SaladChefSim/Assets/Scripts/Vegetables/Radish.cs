@@ -14,4 +14,9 @@ public class Radish : Vegetable
     {
         return "Radish";
     }
+
+    public override int GetID()
+    {
+        return 5;
+    }
 }

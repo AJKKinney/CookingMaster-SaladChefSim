@@ -13,6 +13,11 @@ public class Vegetable : MonoBehaviour
         return "Vegetable";
     }
 
+    public virtual int GetID()
+    {
+        return -1;
+    }
+
     public virtual Vegetable Grab()
     {
         return this;

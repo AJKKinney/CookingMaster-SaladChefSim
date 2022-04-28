@@ -6,11 +6,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementController))]
 [RequireComponent(typeof(PlayerInventory))]
+[RequireComponent(typeof(PlayerInventoryHUD))]
 public class CarrierController : MonoBehaviour
 {
     private PlayerControls playerControls;
     private PlayerMovementController controller;
     private PlayerInventory inventory;
+    private PlayerInventoryHUD inventoryHUD;
 
     [Header("Pick Up Settings")]
     public float rayLength = 0.5f;
@@ -21,6 +23,7 @@ public class CarrierController : MonoBehaviour
     {
         inventory = GetComponent<PlayerInventory>();
         controller = GetComponent<PlayerMovementController>();
+        inventoryHUD = GetComponent<PlayerInventoryHUD>();
     }
 
     void Start()
@@ -50,41 +53,38 @@ public class CarrierController : MonoBehaviour
             //Vegetable Interaction
             if (hit.transform.CompareTag("Vegetable"))
             {
+                Vegetable veg = hit.collider.gameObject.GetComponent<Vegetable>();
+
                 //Pickup Vegetable
                 TryPickupVeggie(hit);
+                inventoryHUD.CreateCarriedIcon(veg.GetID());
             }
+
+
             else if (hit.transform.CompareTag("Plate"))
             {
                 Plate plate = hit.collider.gameObject.GetComponent<Plate>();
 
-                //pickup plate
-                if(inventory.carriedVegetables[0] == null && inventory.carriedMixture == null)
+                //if plate was full and inventory location is open pick up vegetable from plate
+                if (inventory.carriedVegetables[1] == null && plate.currentVegetable != null && inventory.carriedMixture == null)
                 {
-                    if (inventory.GrabMixture(plate.currentMixture) == true)
-                    {
-                        plate.RemovePlate();
-                    }
+                    inventory.AddVegetable(plate.currentVegetable);
+                    inventoryHUD.CreateCarriedIcon(plate.currentVegetable.GetID());
+                    plate.currentVegetable = null;
                 }
-                else if (inventory.carriedVegetables[0] != null)
+                else if (inventory.carriedVegetables[0] != null && plate.currentVegetable == null)
                 {
                     //Store Vegetable on Plate
                     if (plate.StoreVegetable(inventory.carriedVegetables[0]) == true)
                     {
                         inventory.DropVegetable();
-                    }
-                    //if plate was full and inventory location is open pick up vegetable from plate
-                    else if (inventory.carriedVegetables[1] == null && plate.currentVegetable != null)
-                    {
-                        inventory.AddVegetable(plate.currentVegetable);
+                        inventoryHUD.RemoveIcon();
                     }
                 }
-                //Add Mixture To Salad on Plate
-                else if (inventory.carriedMixture != null)
-                {
-                    plate.AddMixture(inventory.carriedMixture, inventory);
-                    inventory.DropMixture();
-                }
+
             }
+
+
             //Trash Interaction
             else if (hit.transform.CompareTag("Trash"))
             {
@@ -93,6 +93,7 @@ public class CarrierController : MonoBehaviour
                 {
                     Debug.Log("Threw Away " + inventory.carriedVegetables[0].GetName());
                     inventory.DropVegetable();
+                    inventoryHUD.RemoveIcon();
                 }
                 //Throw away carried mixture
                 else if(inventory.carriedMixture != null)
@@ -105,6 +106,8 @@ public class CarrierController : MonoBehaviour
                     inventory.DropMixture();
                 }
             }
+
+
             //Customer Interaction
             else if (hit.transform.CompareTag("Customer"))
             {
@@ -120,6 +123,8 @@ public class CarrierController : MonoBehaviour
                     }
                 }
             }
+
+
             //Cutting Board Interaction
             else if (hit.transform.CompareTag("Chopping"))
             {
@@ -131,6 +136,7 @@ public class CarrierController : MonoBehaviour
                     if (ChopVegetable(choppingLocation))
                     {
                         inventory.DropVegetable();
+                        inventoryHUD.RemoveIcon();
                     }
                 }
                 //put mixture on cutting board

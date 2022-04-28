@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScorePickup : Pickup
 {
 
-    private readonly int score = 20;
+    private readonly int score = 10;
 
     internal override void PickUp(PlayerMovementController player)
     {

@@ -14,5 +14,10 @@ public class MiniCorn : Vegetable
     {
         return "Mini Corn";
     }
+
+    public override int GetID()
+    {
+        return 2;
+    }
 }
 
