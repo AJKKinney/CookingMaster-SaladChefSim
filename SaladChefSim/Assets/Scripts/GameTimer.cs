@@ -14,6 +14,7 @@ public class GameTimer : MonoBehaviour
     [HideInInspector]
     public float playerTwoTimeRemaining;
 
+    public bool started = false;
     [Header("Players")]
     public PlayerMovementController playerOne;
     public PlayerMovementController playerTwo;
@@ -45,10 +46,11 @@ public class GameTimer : MonoBehaviour
     {
         Tick();
 
-        if (playerOneTimeRemaining > 0 && playerOneTimeRemaining < gameLength)
+        //started bool added to prevent from constantly firing
+        if (playerOneTimeRemaining > 0 && playerOneTimeRemaining < gameLength && started == false)
         {
             UnlockPlayers();
-
+            started = true;
         }
     }
 

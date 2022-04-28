@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4887491721473786544}
   - component: {fileID: 153339664128793571}
-  - component: {fileID: 8002759341255987819}
+  - component: {fileID: -5503793864792881262}
   m_Layer: 0
   m_Name: Score  Pick-Up
   m_TagString: Untagged
@@ -41,12 +41,12 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6332360863537725930}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8002759341255987819
+--- !u!114 &-5503793864792881262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,11 +55,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6332360863537725930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: babbb9a19e3d43842a10d2ab8d6eaaa2, type: 3}
+  m_Script: {fileID: 11500000, guid: dc56cf6f21cbabc48b3e64c2f490ec51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerOneScoreboard: {fileID: 0}
-  playerTwoScoreboard: {fileID: 0}
+  powerupGFX: {fileID: 7676585685201254515}
 --- !u!1 &7676585685201254515
 GameObject:
   m_ObjectHideFlags: 0

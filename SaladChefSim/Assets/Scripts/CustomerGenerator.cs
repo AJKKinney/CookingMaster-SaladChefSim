@@ -8,7 +8,7 @@ public class CustomerGenerator : MonoBehaviour
     readonly private int minIngredients = 2;
     readonly private int maxIngredients = 6;
 
-    public int[] GenerateCustomer()
+    public int[] GenerateCustomer(out int numberOfVegetables)
     {
         int[] customerOrder = new int[6];
 
@@ -20,6 +20,7 @@ public class CustomerGenerator : MonoBehaviour
             customerOrder[ingredient] += 1;
         }
 
+        numberOfVegetables = numIngredients;
         return customerOrder;
     }
 

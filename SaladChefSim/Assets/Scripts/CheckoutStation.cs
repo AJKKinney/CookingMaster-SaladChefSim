@@ -18,10 +18,12 @@ public class CheckoutStation : MonoBehaviour
     [HideInInspector]
     public int[] desiredMixture;
     private CustomerGenerator customerGenerator;
-    readonly private PickupGenerator pickupGenerator;
+    private PickupGenerator pickupGenerator;
 
 
     [Header("Customers")]
+    readonly private float baseWaitTime = 30;
+    readonly private float timePerVeg = 10f;
     public GameObject customerGFX;
     public bool startingCustomer = false;
     CustomerUI customerUI;
@@ -39,6 +41,7 @@ public class CheckoutStation : MonoBehaviour
             timer = Random.Range(timerLow, timerHigh);
         }
         customerUI = GetComponentInChildren<CustomerUI>();
+        pickupGenerator = GetComponent<PickupGenerator>();
     }
 
     private void Update()
@@ -61,11 +64,13 @@ public class CheckoutStation : MonoBehaviour
         }
         else
         {
-            desiredMixture = customerGenerator.GenerateCustomer();
+            //generate customer desires and set time to wait based on number of desired veggies
+            int numVeg;
+            desiredMixture = customerGenerator.GenerateCustomer(out numVeg);
             customerUI.UpdateDesires(desiredMixture);
             customerGFX.SetActive(true);
             customerWaiting = true;
-            timer = Random.Range(timerLow, timerHigh);
+            timer = baseWaitTime + timePerVeg * numVeg;
             customerMaxWaitTime = timer;
         }
     }
@@ -111,8 +116,8 @@ public class CheckoutStation : MonoBehaviour
 
         for(int i = 0; i < servedMixture.Length; i++)
         {
-            Debug.Log("served " + servedMixture[i].ToString());
-            Debug.Log("desired " + desiredMixture[i].ToString());
+            //Debug.Log("served " + servedMixture[i].ToString());
+            //Debug.Log("desired " + desiredMixture[i].ToString());
             if(servedMixture[i] != desiredMixture[i])
             {
                 correctSalad = false;
@@ -127,6 +132,7 @@ public class CheckoutStation : MonoBehaviour
             ScoreTracker.instance.AddPoints(ScoreTracker.instance.basePointsAwarded, server);
             if (timer >= customerMaxWaitTime * 0.7f)
             {
+                Debug.Log("You generated a pickup!");
                 pickupGenerator.GeneratePickup();
                 return true;
             }

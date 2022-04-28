@@ -44,6 +44,7 @@ public class ChoppingLocation : MonoBehaviour
     {
         if (chopTime <= 0)
         {
+            Debug.Log("Start chopping");
             owner.locked = true;
             choppingVegetable = veggie;
             chopTime = veggie.chopTime;
