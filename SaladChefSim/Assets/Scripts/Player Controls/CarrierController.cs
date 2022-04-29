@@ -56,8 +56,9 @@ public class CarrierController : MonoBehaviour
                 Vegetable veg = hit.collider.gameObject.GetComponent<Vegetable>();
 
                 //Pickup Vegetable
-                TryPickupVeggie(hit);
-                inventoryHUD.CreateCarriedIcon(veg.GetID());
+                if (TryPickupVeggie(hit)) {
+                    inventoryHUD.CreateCarriedIcon(veg.GetID());
+                }
             }
 
 
@@ -157,10 +158,10 @@ public class CarrierController : MonoBehaviour
     }
 
     //add hit veggie to inventory
-    public void TryPickupVeggie(RaycastHit hitCollider)
+    public bool TryPickupVeggie(RaycastHit hitCollider)
     {
         Vegetable veggie = hitCollider.collider.gameObject.GetComponent<Vegetable>();
-        inventory.AddVegetable(veggie);
+        return inventory.AddVegetable(veggie);
     }
 
     //chop veggies at chop location

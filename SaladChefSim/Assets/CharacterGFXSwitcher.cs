@@ -5,6 +5,8 @@ using UnityEngine;
 public class CharacterGFXSwitcher : MonoBehaviour
 {
 
+    public PlayerAnimationManager playerAnimManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -12,8 +14,10 @@ public class CharacterGFXSwitcher : MonoBehaviour
         GameObject character = GetChosenCharacter();
         if (character != null)
         {
-            Instantiate(character, transform);
+            //Create Character GFX and assign player animator
+            playerAnimManager.playerAnimator = Instantiate(character, transform).GetComponent<Animator>();
         }
+
     }
 
     // Update is called once per frame
@@ -25,6 +29,6 @@ public class CharacterGFXSwitcher : MonoBehaviour
     //return the chosen character
     public virtual GameObject GetChosenCharacter()
     {
-        return CharacterSelectionController.chosenCharacaterPrefabPlayerOne;
+        return CharacterSelectionController.chosenCharacterPrefabPlayerOne;
     }
 }

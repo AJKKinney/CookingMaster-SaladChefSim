@@ -6,7 +6,7 @@ using UnityEngine;
 public class CharacterSelectionController : MonoBehaviour
 {
 
-    public static GameObject chosenCharacaterPrefabPlayerOne;
+    public static GameObject chosenCharacterPrefabPlayerOne;
     public static string playerOneInitials;
     public static GameObject chosenCharacterPrefabPlayerTwo;
     public static string playerTwoInitials;

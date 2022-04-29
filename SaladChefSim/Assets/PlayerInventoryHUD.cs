@@ -8,8 +8,8 @@ public class PlayerInventoryHUD : MonoBehaviour
 {
     public GameObject playerInventoryHUD;
     public Image[] vegetableIMGs = new Image[6];
-    public Image iconOne;
-    public Image iconTwo;
+    private Image iconOne;
+    private Image iconTwo;
 
     readonly private float iconScale = 1.5f;
 
