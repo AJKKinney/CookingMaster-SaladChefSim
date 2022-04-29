@@ -13,12 +13,14 @@ public class TimerUI : MonoBehaviour
     public TextMeshProUGUI playerOneTimer;
     public TextMeshProUGUI playerTwoTimer;
     public TextMeshProUGUI countdownNumbers;
+    public AudioClip countdownSFX;
+    public AudioClip goSFX;
     public GameObject gameHUD;
 
     private WinScreenController winScreen;
 
     private bool winner = false;
-
+    private bool counting = true;
 
     //Create Coundown Numbers
     void Awake()
@@ -73,15 +75,7 @@ public class TimerUI : MonoBehaviour
         {
             int countdown = timeRemaining - (int)GameTimer.instance.gameLength;
 
-            if (countdown == 0)
-            {
-                countdownNumbers.text = "GO!";
-                Destroy(countdownNumbers.gameObject, 1);
-            }
-            else
-            {
-                countdownNumbers.text = (timeRemaining - (int)GameTimer.instance.gameLength).ToString();
-            }
+            UpdateCountdownUI(countdown);
         }
 
 
@@ -94,6 +88,31 @@ public class TimerUI : MonoBehaviour
         if (timeRemaining < GameTimer.instance.gameLength)
         {
             playerTwoTimer.text = timeRemaining.ToString();
+        }
+    }
+
+    //updates countdown sequence
+    private void UpdateCountdownUI(int countdown)
+    {
+        if (counting == true)
+        {
+            if (countdown <= 0)
+            {
+                //Start Music
+                MusicController.instance.StartSong();
+                Destroy(countdownNumbers.gameObject, 1);
+                countdownNumbers.text = "GO!";
+                //play Go SFX
+                SFXAudioController.instance.PlaySFX(goSFX);
+                counting = false;
+            }
+            else if (countdownNumbers.text != countdown.ToString())
+            {
+                //play Countdown SFX
+                SFXAudioController.instance.PlaySFX(countdownSFX);
+
+                countdownNumbers.text = countdown.ToString();
+            }
         }
     }
 }

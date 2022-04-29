@@ -23,8 +23,16 @@ public class WinScreenController : MonoBehaviour
     public Color blue = new Color(0, 11, 255);
     public Color yellow = new Color();
 
+    public AudioClip endGameSound;
+    public AudioClip endMusic;
+
     public void DeclareWinner()
     {
+        //Play End Game Sound
+        SFXAudioController.instance.PlaySFX(endGameSound);
+        //Play Win Screen Music
+        MusicController.instance.ChangeSong(endMusic);
+
         if (ScoreTracker.instance.getScore(1) > ScoreTracker.instance.getScore(2))
         {
             Debug.Log("Player One Wins");
@@ -44,6 +52,12 @@ public class WinScreenController : MonoBehaviour
             //Check for highscores
             if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(1)))
             {
+
+                //update highscore UI
+                foreach (TextMeshProUGUI text in newHighScoreText.GetComponentsInChildren<TextMeshProUGUI>())
+                {
+                    text.color = red;
+                }
 
                 //new Highscore HUD
                 newHighScoreText.SetActive(true);
@@ -77,6 +91,12 @@ public class WinScreenController : MonoBehaviour
             //Use reverse order for player 2 winner
             if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(2)))
             {
+
+                //update highscore UI
+                foreach (TextMeshProUGUI text in newHighScoreText.GetComponentsInChildren<TextMeshProUGUI>())
+                {
+                    text.color = blue;
+                }
 
                 //new Highscore HUD
                 newHighScoreText.SetActive(true);
@@ -112,7 +132,11 @@ public class WinScreenController : MonoBehaviour
             //1st player checks first on ties
             if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(1)))
             {
-
+                //update highscore UI
+                foreach (TextMeshProUGUI text in newHighScoreText.GetComponentsInChildren<TextMeshProUGUI>())
+                {
+                    text.color = red;
+                }
                 //new Highscore HUD
                 newHighScoreText.gameObject.SetActive(true);
 
