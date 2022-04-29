@@ -10518,7 +10518,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603154517}
-  m_LocalRotation: {x: 0.6818435, y: 0.00000014999281, z: -0.00000013981119, w: 0.73149806}
+  m_LocalRotation: {x: 0.6818435, y: -0.00000014999281, z: 0.00000013981119, w: 0.73149806}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12661,6 +12661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWinScreen: {fileID: 89499052}
   winnerText: {fileID: 1136422249}
+  subText: {fileID: 873856594}
   bannerImage: {fileID: 813494172}
   newHighScoreText: {fileID: 611063828}
   secondHighscoreText: {fileID: 239151785}

@@ -12,6 +12,7 @@ public class WinScreenController : MonoBehaviour
     [Header("Win Screen")]
     public GameObject playerWinScreen;
     public TextMeshProUGUI winnerText;
+    public TextMeshProUGUI subText;
     public Image bannerImage;
     public GameObject newHighScoreText;
     public TextMeshProUGUI secondHighscoreText;
@@ -38,6 +39,7 @@ public class WinScreenController : MonoBehaviour
             bannerImage.color = red;
 
             winnerText.text = "PLAYER ONE";
+            subText.text = "IS THE WINNER!";
 
             //Check for highscores
             if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(1)))
@@ -69,6 +71,7 @@ public class WinScreenController : MonoBehaviour
             bannerImage.color = blue;
 
             winnerText.text = "PLAYER TWO";
+            subText.text = "IS THE WINNER!";
 
             //Check for highscores
             //Use reverse order for player 2 winner
@@ -103,6 +106,7 @@ public class WinScreenController : MonoBehaviour
             bannerImage.color = yellow;
 
             winnerText.text = "DRAW";
+            subText.text = "YOU ARE BOTH WINNERS!";
 
             //Check for highscores
             //1st player checks first on ties
