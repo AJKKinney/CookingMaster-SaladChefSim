@@ -8,6 +8,7 @@ public class PlayerCarryHud : MonoBehaviour
     public GameObject player;
     private Vector3 offset;
 
+
     private void Awake()
     {
         offset = transform.position - player.transform.position;

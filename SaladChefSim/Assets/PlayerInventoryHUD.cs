@@ -11,6 +11,8 @@ public class PlayerInventoryHUD : MonoBehaviour
     public Image iconOne;
     public Image iconTwo;
 
+    readonly private float iconScale = 1.5f;
+
     //call to add a veggie icon to hud
     public void CreateCarriedIcon(int veggie)
     {
@@ -19,7 +21,7 @@ public class PlayerInventoryHUD : MonoBehaviour
             playerInventoryHUD.SetActive(true);
             GameObject newIcon = GameObject.Instantiate(new GameObject(), playerInventoryHUD.transform);
             Image icon = newIcon.AddComponent<Image>();
-            icon.transform.localScale *= 2;
+            icon.transform.localScale *= iconScale;
             icon.sprite = vegetableIMGs[veggie].sprite;
             icon.color = vegetableIMGs[veggie].color;
             icon.name = vegetableIMGs[veggie].name;
