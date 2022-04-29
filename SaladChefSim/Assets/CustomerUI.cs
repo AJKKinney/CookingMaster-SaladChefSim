@@ -49,6 +49,7 @@ public class CustomerUI : MonoBehaviour
     {
         GameObject newIcon = GameObject.Instantiate(new GameObject(), desiresPanel.transform);
         Image icon = newIcon.AddComponent<Image>();
+        icon.transform.localScale *= 2;
         icon.sprite = vegetableIMGs[veggie].sprite;
         icon.color = vegetableIMGs[veggie].color;
         icon.name = vegetableIMGs[veggie].name;
