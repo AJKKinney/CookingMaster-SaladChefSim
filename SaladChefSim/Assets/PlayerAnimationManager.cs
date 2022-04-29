@@ -7,7 +7,6 @@ public class PlayerAnimationManager : MonoBehaviour
 {
     public Animator playerAnimator;
 
-
     public void SetWalkSpeed(float speed)
     {
         playerAnimator.SetFloat("MoveSpeed", speed);
