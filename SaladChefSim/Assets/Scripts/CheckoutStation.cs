@@ -31,6 +31,10 @@ public class CheckoutStation : MonoBehaviour
     CustomerUI customerUI;
 
 
+    public AudioClip happySFX;
+    public AudioClip[] angrySFX;
+    public AudioClip newCustomerSFX;
+
     private void Awake()
     {
         customerGenerator = GetComponent<CustomerGenerator>();
@@ -83,7 +87,14 @@ public class CheckoutStation : MonoBehaviour
             int numVeg;
             desiredMixture = customerGenerator.GenerateCustomer(out numVeg);
             customerUI.UpdateDesires(desiredMixture);
-            customerGFX.SetActive(true);
+
+            //play new customer sfx if needed
+            if (customerGFX.activeSelf != true)
+            {
+                SFXAudioController.instance.PlaySFX(newCustomerSFX);
+                customerGFX.SetActive(true);
+            }
+
             customerWaiting = true;
             timer = baseWaitTime + timePerVeg * numVeg;
             customerMaxWaitTime = timer;
@@ -160,6 +171,10 @@ public class CheckoutStation : MonoBehaviour
         {
             //increase tick speed for incorrect dish
             Debug.Log("You Incorrectly Served the Customer " + salad.GetName());
+
+            //Play Angry SFX
+            SFXAudioController.instance.PlaySFX(angrySFX);
+
             timeMod += customerWaitPenalty;
         }
         return false;

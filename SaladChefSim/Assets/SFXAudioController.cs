@@ -25,9 +25,16 @@ public class SFXAudioController : MonoBehaviour
         sfxSource = GetComponent<AudioSource>();
     }
 
-
+    //play single sfx
     public void PlaySFX(AudioClip sfx)
     {
         sfxSource.PlayOneShot(sfx);
+    }
+
+    //play random sfx from array
+    public void PlaySFX(AudioClip[] sfx)
+    {
+        int index = Random.Range(0, sfx.Length);
+        sfxSource.PlayOneShot(sfx[index]);
     }
 }
