@@ -12,6 +12,7 @@ public class GameSceneManager : MonoBehaviour
     [Header("Scene Loading Settings")]
     public Image loadingPanel;
     public Slider loadingBar;
+    public GameObject prompt;
 
     AsyncOperation loading;
 
@@ -28,9 +29,15 @@ public class GameSceneManager : MonoBehaviour
             loadingBar.value = loadingProgress + 0.1f;
 
             //activate scene on keypress
-            if (loading.progress >= 0.9f && Keyboard.current.anyKey.wasPressedThisFrame == true)
+            if (loading.progress >= 0.9f)
             {
-                loading.allowSceneActivation = true;
+                //prompt user input
+                prompt.SetActive(true);
+
+                if (Keyboard.current.anyKey.wasPressedThisFrame == true)
+                {
+                    loading.allowSceneActivation = true;
+                }
             }
         }
     }
@@ -40,6 +47,9 @@ public class GameSceneManager : MonoBehaviour
     {
         loadingPanel.gameObject.SetActive(true);
         loading = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MainScene");
+
+        //hide prompt until loaded
+        prompt.SetActive(false);
 
         //hold the scene until activation
         loading.allowSceneActivation = false;

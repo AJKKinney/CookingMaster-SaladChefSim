@@ -19,9 +19,13 @@ public class PlayerSelector : MonoBehaviour
 
     public GameObject playerOneIndicator;
     public TextMeshProUGUI playerOneUserNameUI;
+    public TextMeshProUGUI playerOnePrompt;
     public GameObject playerTwoIndicator;
     public TextMeshProUGUI playerTwoUserNameUI;
+    public GameObject playerTwoPromptOne;
+    public GameObject playerTwoPromptTwo;
     public GameSceneManager sceneManager;
+
 
     private void Awake()
     {
@@ -37,6 +41,9 @@ public class PlayerSelector : MonoBehaviour
         //char select
         if (playerOneSelected != true)
         {
+            //display controls
+            playerOnePrompt.text = "Swap: a & d\nSelect: c";
+
             if (controls.PlayerOneActions.Movement.ReadValue<Vector2>().x > 0 && controls.PlayerOneActions.Movement.WasPressedThisFrame())
             {
                 if(playerOneIndex < characterPrefabs.Length - 1)
@@ -56,6 +63,7 @@ public class PlayerSelector : MonoBehaviour
 
             if (controls.PlayerOneActions.Interact.WasPressedThisFrame())
             {
+
                 CharacterSelectionController.chosenCharacterPrefabPlayerOne = characterPrefabs[playerOneIndex];
                 playerOneIndex = 0;
                 playerOneUserNameUI.gameObject.SetActive(true);
@@ -65,6 +73,9 @@ public class PlayerSelector : MonoBehaviour
         //username select
         else if (playerOneName.Length < 3)
         {
+            //display controls
+            playerOnePrompt.text = "Swap: w & s\nSelect: c";
+
             if (controls.PlayerOneActions.Movement.ReadValue<Vector2>().y > 0 && controls.PlayerOneActions.Movement.WasPressedThisFrame())
             {
                 if (playerOneIndex < alpha.Length - 1)
@@ -100,6 +111,8 @@ public class PlayerSelector : MonoBehaviour
                     CharacterSelectionController.playerOneInitials = playerOneName;
                     //activate check mark when ready
                     playerOneUserNameUI.transform.GetChild(0).gameObject.SetActive(true);
+                    //clear controls
+                    playerOnePrompt.text = "";
 
 
                     //start if both are ready
@@ -116,6 +129,13 @@ public class PlayerSelector : MonoBehaviour
         //char select
         if (playerTwoSelected != true)
         {
+            //displayControls
+            if (playerTwoPromptOne.activeSelf == false)
+            {
+                playerTwoPromptOne.SetActive(true);
+                playerTwoPromptTwo.SetActive(false);
+            }
+
             if (controls.PlayerTwoActions.Movement.ReadValue<Vector2>().x > 0 && controls.PlayerTwoActions.Movement.WasPressedThisFrame())
             {
                 if (playerTwoIndex < characterPrefabs.Length - 1)
@@ -144,6 +164,13 @@ public class PlayerSelector : MonoBehaviour
         //username select
         else if (playerTwoName.Length < 3)
         {
+            //display controls
+            if (playerTwoPromptTwo.activeSelf == false)
+            {
+                playerTwoPromptOne.SetActive(false);
+                playerTwoPromptTwo.SetActive(true);
+            }
+
             if (controls.PlayerTwoActions.Movement.ReadValue<Vector2>().y > 0 && controls.PlayerTwoActions.Movement.WasPressedThisFrame())
             {
                 if (playerTwoIndex < alpha.Length - 1)
@@ -179,6 +206,9 @@ public class PlayerSelector : MonoBehaviour
                     CharacterSelectionController.playerTwoInitials = playerTwoName;
                     //activate check mark when ready
                     playerTwoUserNameUI.transform.GetChild(0).gameObject.SetActive(true);
+                    //disable prompts
+                    playerTwoPromptOne.transform.parent.gameObject.SetActive(false);
+
 
                     //start if both are ready
                     if(playerOneName.Length == 3)
