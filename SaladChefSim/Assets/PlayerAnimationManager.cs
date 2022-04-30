@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerAnimationManager : MonoBehaviour
 {
     public Animator playerAnimator;
+    public ArmsAnimator armsAnimator;
 
     public void SetWalkSpeed(float speed)
     {
@@ -20,4 +21,14 @@ public class PlayerAnimationManager : MonoBehaviour
         }
     }
 
+    public void AddVeggie(int vegIndex, bool rightHand)
+    {
+        armsAnimator.AddToHand(vegIndex, rightHand);
+    }
+
+
+    public void RemoveVeggie()
+    {
+        armsAnimator.ClearHand();
+    }
 }

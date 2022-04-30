@@ -16,14 +16,9 @@ public class CharacterGFXSwitcher : MonoBehaviour
         {
             //Create Character GFX and assign player animator
             playerAnimManager.playerAnimator = Instantiate(character, transform).GetComponent<Animator>();
+            playerAnimManager.armsAnimator = playerAnimManager.GetComponentInChildren<ArmsAnimator>();
         }
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     //return the chosen character

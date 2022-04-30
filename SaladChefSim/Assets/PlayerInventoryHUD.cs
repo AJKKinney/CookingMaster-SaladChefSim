@@ -4,14 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerInventory))]
+[RequireComponent(typeof(PlayerAnimationManager))]
 public class PlayerInventoryHUD : MonoBehaviour
 {
     public GameObject playerInventoryHUD;
     public Image[] vegetableIMGs = new Image[6];
+    private PlayerAnimationManager animationManager;
     private Image iconOne;
     private Image iconTwo;
 
     readonly private float iconScale = 1.5f;
+
+    private void Awake()
+    {
+        animationManager = GetComponent<PlayerAnimationManager>();
+    }
 
     //call to add a veggie icon to hud
     public void CreateCarriedIcon(int veggie)
@@ -29,10 +36,16 @@ public class PlayerInventoryHUD : MonoBehaviour
             if (iconOne == null)
             {
                 iconOne = icon;
+
+                //animate hands
+                animationManager.AddVeggie(veggie, true);
             }
             else
             {
                 iconTwo = icon;
+
+                //animate hands
+                animationManager.AddVeggie(veggie, false);
             }
         }
     }
@@ -43,11 +56,19 @@ public class PlayerInventoryHUD : MonoBehaviour
         Destroy(iconOne.gameObject);
         if (iconTwo != null)
         {
+            //animate hands
+            animationManager.RemoveVeggie();
+
+            //shift icons
             iconOne = iconTwo;
             iconTwo = null;
         }
         else
         {
+            //animate hands
+            animationManager.RemoveVeggie();
+
+            //disable icons
             playerInventoryHUD.SetActive(false);
         }
     }

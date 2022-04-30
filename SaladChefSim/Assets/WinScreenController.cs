@@ -18,6 +18,8 @@ public class WinScreenController : MonoBehaviour
     public TextMeshProUGUI secondHighscoreText;
     public TextMeshProUGUI scores;
     public TextMeshProUGUI names;
+    public TextMeshProUGUI highscoreOne;
+    public TextMeshProUGUI highscoreTwo;
 
     public Color red = new Color(255, 0, 0);
     public Color blue = new Color(0, 11, 255);
@@ -61,12 +63,13 @@ public class WinScreenController : MonoBehaviour
 
                 //new Highscore HUD
                 newHighScoreText.SetActive(true);
-
+                highscoreOne.text = CharacterSelectionController.playerOneInitials;
 
                 if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(2), CharacterSelectionController.playerTwoInitials))
                 {
                     secondHighscoreText.gameObject.SetActive(true);
                     secondHighscoreText.color = blue;
+                    highscoreTwo.text = CharacterSelectionController.playerTwoInitials;
                 }
             }
             playerWinScreen.SetActive(true);
@@ -100,12 +103,14 @@ public class WinScreenController : MonoBehaviour
 
                 //new Highscore HUD
                 newHighScoreText.SetActive(true);
+                highscoreTwo.text = CharacterSelectionController.playerTwoInitials;
 
 
                 if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(1), CharacterSelectionController.playerOneInitials))
                 {
                     secondHighscoreText.gameObject.SetActive(true);
                     secondHighscoreText.color = red;
+                    highscoreOne.text = CharacterSelectionController.playerOneInitials;
                 }
             }
 
@@ -139,12 +144,14 @@ public class WinScreenController : MonoBehaviour
                 }
                 //new Highscore HUD
                 newHighScoreText.gameObject.SetActive(true);
+                highscoreOne.text = CharacterSelectionController.playerOneInitials;
 
 
                 if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(2), CharacterSelectionController.playerTwoInitials))
                 {
                     secondHighscoreText.gameObject.SetActive(true);
                     secondHighscoreText.color = blue;
+                    highscoreTwo.text = CharacterSelectionController.playerTwoInitials;
                 }
 
             } 

@@ -20,6 +20,7 @@ public class PlayerInventory : MonoBehaviour
                 {
                     Debug.Log("Picked up " + veggie.GetName());
                     carriedVegetables[i] = veggie.Grab();
+
                     return true;
                 }
             }
