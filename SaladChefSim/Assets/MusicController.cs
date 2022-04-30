@@ -25,7 +25,10 @@ public class MusicController : MonoBehaviour
         songSource = GetComponent<AudioSource>();
     }
 
-
+    private void Start()
+    {
+        SetMusicVolume();
+    }
     public void ChangeSong(AudioClip song)
     {
         songSource.Stop();
@@ -45,4 +48,10 @@ public class MusicController : MonoBehaviour
     {
         songSource.Stop();
     }
+
+    public void SetMusicVolume()
+    {
+        songSource.volume = AudioSettingsController.musicVolume;
+    }
+
 }

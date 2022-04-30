@@ -10966,7 +10966,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.69462985, y: -0.00000034514085, z: 0.0000003332801, w: 0.7193673}
+  m_LocalRotation: {x: 0.69462985, y: 0.00000034498242, z: -0.00000033311605, w: 0.7193673}
   m_LocalPosition: {x: 0, y: 50, z: 0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12915,7 +12915,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1238706649}
-  m_LocalRotation: {x: 0.68826145, y: 0.0000009349794, z: -0.0000008870342, w: 0.7254628}
+  m_LocalRotation: {x: 0.68826145, y: -0.00000013064424, z: 0.00000012394487, w: 0.72546273}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13661,7 +13661,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333685982}
-  m_LocalRotation: {x: 0.6946299, y: -0.00000034502827, z: 0.00000033316348, w: 0.7193673}
+  m_LocalRotation: {x: 0.6946299, y: 0.0000003450283, z: -0.00000033316354, w: 0.7193673}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -22482,6 +22482,7 @@ GameObject:
   - component: {fileID: 1917754433}
   - component: {fileID: 1917754434}
   - component: {fileID: 1917754435}
+  - component: {fileID: 1917754436}
   m_Layer: 0
   m_Name: System Manager
   m_TagString: Untagged
@@ -22627,6 +22628,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65572981a0b12af4abed27fbe4eeda3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1917754436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917754427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a169835e245bf9641b276c4119d36f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1918522196

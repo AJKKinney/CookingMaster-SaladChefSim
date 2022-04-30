@@ -8,7 +8,7 @@ public class SFXAudioController : MonoBehaviour
     private AudioSource sfxSource;
     public static SFXAudioController instance;
 
-    // Start is called before the first frame update
+
     void Awake()
     {
         //singleton
@@ -25,6 +25,11 @@ public class SFXAudioController : MonoBehaviour
         sfxSource = GetComponent<AudioSource>();
     }
 
+    private void Start()
+    {
+        SetSFXVolume();
+    }
+
     //play single sfx
     public void PlaySFX(AudioClip sfx)
     {
@@ -36,5 +41,11 @@ public class SFXAudioController : MonoBehaviour
     {
         int index = Random.Range(0, sfx.Length);
         sfxSource.PlayOneShot(sfx[index]);
+    }
+
+    //sets volume
+    public void SetSFXVolume()
+    {
+        sfxSource.volume = AudioSettingsController.sfxVolume;
     }
 }
