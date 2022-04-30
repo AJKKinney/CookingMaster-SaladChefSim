@@ -30,8 +30,8 @@ public class CheckoutStation : MonoBehaviour
     public bool startingCustomer = false;
     CustomerUI customerUI;
 
-
-    public AudioClip happySFX;
+    [Header("Audio")]
+    public AudioClip[] happySFX;
     public AudioClip[] angrySFX;
     public AudioClip newCustomerSFX;
 
@@ -102,9 +102,11 @@ public class CheckoutStation : MonoBehaviour
     }
 
 
+
+
     //Checks the salad given to the customer to see if it matches their preferences.
     //returns true if the customer was served with more than 70% time remaining
-    public bool ServeCustomer(Mixture salad, int server)
+    public bool ServeCustomer(Mixture salad, int player)
     {
         int[] servedMixture = new int[6];
 
@@ -155,10 +157,18 @@ public class CheckoutStation : MonoBehaviour
         {
             //award points for correct dish
             Debug.Log("You Correctly Served the Customer " + salad.GetName());
-            customerGFX.SetActive(false);
+
+            //play Happy SFX
+            SFXAudioController.instance.PlaySFX(happySFX);
+
+
             //customer no longer waiting
+            customerGFX.SetActive(false);
             customerWaiting = false;
-            ScoreTracker.instance.AddPoints(ScoreTracker.instance.basePointsAwarded, server);
+
+            //award points to the player who served the food
+            ScoreTracker.instance.AddPoints(ScoreTracker.instance.basePointsAwarded, player);
+
             //powerup if >%70 time remaining
             if (timer >= customerMaxWaitTime * 0.7f)
             {

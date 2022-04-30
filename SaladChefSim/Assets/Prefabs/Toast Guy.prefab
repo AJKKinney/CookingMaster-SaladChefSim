@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 8178386101424404387}
   - component: {fileID: 8571985790612997241}
   - component: {fileID: 8571985790612997240}
+  - component: {fileID: 3314187222303889951}
   m_Layer: 0
   m_Name: Toast Guy
   m_TagString: Untagged
@@ -750,6 +751,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightHand: {fileID: 0}
   leftHand: {fileID: 0}
+--- !u!114 &3314187222303889951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8805846208189099289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a115ab35a6e2064a9bd927363864861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footsteps:
+  - {fileID: 8300000, guid: c5fc5794e34359344a4f80187a7d6aec, type: 3}
+  - {fileID: 8300000, guid: 1c8e018dd57316c45af99f9181f2a18f, type: 3}
 --- !u!1 &9076474965919033058
 GameObject:
   m_ObjectHideFlags: 0
