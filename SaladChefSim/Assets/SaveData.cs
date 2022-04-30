@@ -6,9 +6,11 @@ using UnityEngine;
 public class SaveData
 {
     public int[] highscores;
+    public string[] names;
 
-    public SaveData(int[] newScores)
+    public SaveData(int[] newScores, string[] newNames)
     {
         highscores = newScores;
+        names = newNames;
     }
 }

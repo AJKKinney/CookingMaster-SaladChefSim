@@ -25,6 +25,9 @@ public class PlayerSelector : MonoBehaviour
     public GameObject playerTwoPromptOne;
     public GameObject playerTwoPromptTwo;
     public GameSceneManager sceneManager;
+    public GameObject playerOneCharAnchor;
+    public GameObject playerTwoCharAnchor;
+
 
 
     private void Awake()
@@ -49,6 +52,10 @@ public class PlayerSelector : MonoBehaviour
                 if(playerOneIndex < characterPrefabs.Length - 1)
                 {
                     playerOneIndex += 1;
+
+                    //set the correct character active
+                    playerOneCharAnchor.transform.GetChild(playerOneIndex - 1).gameObject.SetActive(false);
+                    playerOneCharAnchor.transform.GetChild(playerOneIndex).gameObject.SetActive(true);
                 }
             }
             else if (controls.PlayerOneActions.Movement.ReadValue<Vector2>().x < 0 && controls.PlayerOneActions.Movement.WasPressedThisFrame())
@@ -56,10 +63,16 @@ public class PlayerSelector : MonoBehaviour
                 if (playerOneIndex > 0)
                 {
                     playerOneIndex -= 1;
+
+                    //set the correct character active
+                    playerOneCharAnchor.transform.GetChild(playerOneIndex + 1).gameObject.SetActive(false);
+                    playerOneCharAnchor.transform.GetChild(playerOneIndex).gameObject.SetActive(true);
                 }
             }
 
+            //update selector UI
             playerOneIndicator.transform.position = transform.GetChild(playerOneIndex).transform.position;
+
 
             if (controls.PlayerOneActions.Interact.WasPressedThisFrame())
             {
@@ -141,6 +154,10 @@ public class PlayerSelector : MonoBehaviour
                 if (playerTwoIndex < characterPrefabs.Length - 1)
                 {
                     playerTwoIndex += 1;
+
+                    //set the correct character active
+                    playerTwoCharAnchor.transform.GetChild(playerTwoIndex - 1).gameObject.SetActive(false);
+                    playerTwoCharAnchor.transform.GetChild(playerTwoIndex).gameObject.SetActive(true);
                 }
             }
             else if (controls.PlayerTwoActions.Movement.ReadValue<Vector2>().x < 0 && controls.PlayerTwoActions.Movement.WasPressedThisFrame())
@@ -148,9 +165,14 @@ public class PlayerSelector : MonoBehaviour
                 if (playerTwoIndex > 0)
                 {
                     playerTwoIndex -= 1;
+
+                    //set the correct character active
+                    playerTwoCharAnchor.transform.GetChild(playerTwoIndex + 1).gameObject.SetActive(false);
+                    playerTwoCharAnchor.transform.GetChild(playerTwoIndex).gameObject.SetActive(true);
                 }
             }
 
+            //update indicator ui
             playerTwoIndicator.transform.position = transform.GetChild(playerTwoIndex).transform.position;
 
             if (controls.PlayerTwoActions.Interact.WasPressedThisFrame())

@@ -10,6 +10,8 @@ public class HighscoreManager : MonoBehaviour
 
 
     public int[] highscores = new int[10];
+    public string[] names = new string[10];
+
 
     void Awake()
     {
@@ -28,6 +30,7 @@ public class HighscoreManager : MonoBehaviour
         //Load Highscores
 
         highscores = SaveSystem.LoadData().highscores;
+        names = SaveSystem.LoadData().names;
     }
 
     // Update is called once per frame
@@ -37,13 +40,13 @@ public class HighscoreManager : MonoBehaviour
     }
 
     //returns true if the score is in the top 10 scores.
-    public bool CheckHighscore(int scoreToCheck)
+    public bool CheckHighscore(int scoreToCheck, string usrName)
     {
         for(int i = 0; i < highscores.Length; i++)
         {
             if(scoreToCheck > highscores[i])
             {
-                TakePlace(scoreToCheck, i);
+                TakePlace(scoreToCheck, i, usrName);
                 return true;
             }
         }
@@ -52,7 +55,7 @@ public class HighscoreManager : MonoBehaviour
     }
 
     // puts the score into the correct highscore place and  shifts the lower highscores removing the lowest
-    private void TakePlace(int score, int place)
+    private void TakePlace(int score, int place, string usrName)
     {
         for(int i = highscores.Length - 1; i >= place; i--)
         {
@@ -60,17 +63,19 @@ public class HighscoreManager : MonoBehaviour
             if (i != highscores.Length - 1)
             {
                 highscores[i + 1] = highscores[i];
+                names[i + 1] = names[i];
             }
 
             //set new score on last
             if(i == place)
             {
                 highscores[i] = score;
+                names[i] = usrName;
             }
         }
 
         //Save highscores
-        SaveSystem.SaveData(highscores);
+        SaveSystem.SaveData(highscores, names);
 
     }
 }

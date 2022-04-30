@@ -50,7 +50,7 @@ public class WinScreenController : MonoBehaviour
             subText.text = "IS THE WINNER!";
 
             //Check for highscores
-            if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(1)))
+            if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(1), CharacterSelectionController.playerOneInitials))
             {
 
                 //update highscore UI
@@ -63,7 +63,7 @@ public class WinScreenController : MonoBehaviour
                 newHighScoreText.SetActive(true);
 
 
-                if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(2)))
+                if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(2), CharacterSelectionController.playerTwoInitials))
                 {
                     secondHighscoreText.gameObject.SetActive(true);
                     secondHighscoreText.color = blue;
@@ -89,7 +89,7 @@ public class WinScreenController : MonoBehaviour
 
             //Check for highscores
             //Use reverse order for player 2 winner
-            if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(2)))
+            if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(2), CharacterSelectionController.playerTwoInitials))
             {
 
                 //update highscore UI
@@ -102,7 +102,7 @@ public class WinScreenController : MonoBehaviour
                 newHighScoreText.SetActive(true);
 
 
-                if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(1)))
+                if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(1), CharacterSelectionController.playerOneInitials))
                 {
                     secondHighscoreText.gameObject.SetActive(true);
                     secondHighscoreText.color = red;
@@ -130,7 +130,7 @@ public class WinScreenController : MonoBehaviour
 
             //Check for highscores
             //1st player checks first on ties
-            if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(1)))
+            if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(1), CharacterSelectionController.playerOneInitials))
             {
                 //update highscore UI
                 foreach (TextMeshProUGUI text in newHighScoreText.GetComponentsInChildren<TextMeshProUGUI>())
@@ -141,7 +141,7 @@ public class WinScreenController : MonoBehaviour
                 newHighScoreText.gameObject.SetActive(true);
 
 
-                if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(2)))
+                if (HighscoreManager.instance.CheckHighscore(ScoreTracker.instance.getScore(2), CharacterSelectionController.playerTwoInitials))
                 {
                     secondHighscoreText.gameObject.SetActive(true);
                     secondHighscoreText.color = blue;
@@ -160,15 +160,29 @@ public class WinScreenController : MonoBehaviour
     private void UpdateHighscoresUI()
     {
         int[] hScores = HighscoreManager.instance.highscores;
+        string[] hNames = HighscoreManager.instance.names;
+
 
         string newScores = "";
+        string newNames = "";
 
-        for(int i = 0; i < hScores.Length; i++)
+        //write scores
+        for (int i = 0; i < hScores.Length; i++)
         {
             newScores += hScores[i].ToString() + "\n";
         }
 
+        //write names
+        for (int i = 0; i < hNames.Length; i++)
+        {
+            if (hNames[i] != null)
+            {
+                newNames += hNames[i].ToString() + "\n";
+            }
+        }
+
         scores.text = newScores;
+        names.text = newNames;
     }
 
 }
