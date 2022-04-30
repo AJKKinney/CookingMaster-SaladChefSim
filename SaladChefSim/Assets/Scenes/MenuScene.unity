@@ -8103,6 +8103,7 @@ MonoBehaviour:
   characterPrefabs:
   - {fileID: 8467772883831715958, guid: bed2afc0e1a401246a71ba6db9edd523, type: 3}
   - {fileID: 8805846208189099289, guid: fc57d7764e7d6d44a95140716e33b05e, type: 3}
+  - {fileID: 840800615967675495, guid: 9c707e909863d7e4888d4713b4e2f2d2, type: 3}
   playerOneIndicator: {fileID: 357569640}
   playerOneUserNameUI: {fileID: 503153268}
   playerOnePrompt: {fileID: 2116199205}

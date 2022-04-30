@@ -14,6 +14,8 @@ public class GameSceneManager : MonoBehaviour
     public Slider loadingBar;
     public GameObject prompt;
 
+    private bool awaitInput = false;
+
     AsyncOperation loading;
 
     // Update is called once per frame
@@ -31,8 +33,10 @@ public class GameSceneManager : MonoBehaviour
             //activate scene on keypress
             if (loading.progress >= 0.9f)
             {
-                //prompt user input
-                prompt.SetActive(true);
+                if(awaitInput == true)
+                {
+                    prompt.SetActive(true);
+                }
 
                 if (Keyboard.current.anyKey.wasPressedThisFrame == true)
                 {
@@ -50,6 +54,7 @@ public class GameSceneManager : MonoBehaviour
 
         //hide prompt until loaded
         prompt.SetActive(false);
+        awaitInput = true;
 
         //hold the scene until activation
         loading.allowSceneActivation = false;
@@ -65,6 +70,8 @@ public class GameSceneManager : MonoBehaviour
     public void ReturnToMenu()
     {
         loadingPanel.gameObject.SetActive(true);
+        //hide prompt until loaded
+        prompt.SetActive(false);
         loading = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("MenuScene");
     }
 }
