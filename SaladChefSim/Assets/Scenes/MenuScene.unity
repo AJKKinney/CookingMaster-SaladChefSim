@@ -348,6 +348,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &65349054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2276,6 +2287,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &424618787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2491,6 +2513,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1603892561}
         m_MethodName: DeleteSaveData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3067,6 +3100,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &542612419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3188,6 +3232,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1133218096}
         m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9621,6 +9676,7 @@ MonoBehaviour:
   sceneManager: {fileID: 1133218096}
   playerOneCharAnchor: {fileID: 1200124325}
   playerTwoCharAnchor: {fileID: 1901262921}
+  sfx: {fileID: 1133218098}
 --- !u!1 &805042603
 GameObject:
   m_ObjectHideFlags: 0
@@ -10522,7 +10578,7 @@ GameObject:
   - component: {fileID: 946260117}
   - component: {fileID: 946260116}
   m_Layer: 5
-  m_Name: Exit Promp
+  m_Name: Exit Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12133,9 +12189,9 @@ GameObject:
   - component: {fileID: 1133218095}
   - component: {fileID: 1133218096}
   - component: {fileID: 1133218097}
-  - component: {fileID: 1133218098}
   - component: {fileID: 1133218100}
   - component: {fileID: 1133218099}
+  - component: {fileID: 1133218098}
   m_Layer: 0
   m_Name: System Manager
   m_TagString: Untagged
@@ -12184,102 +12240,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65572981a0b12af4abed27fbe4eeda3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &1133218098
-AudioSource:
+--- !u!114 &1133218098
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133218094}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d75801b3588bfe4cb1d4f819148e396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIBlips:
+  - {fileID: 8300000, guid: be04dad8c29bc5c4684bc6e8357de816, type: 3}
+  - {fileID: 8300000, guid: 3dc3b5f2b7a8b344fb714cc9010e95a0, type: 3}
+  - {fileID: 8300000, guid: 61e11cbd1c89fa4449f88b4bfb7b8d63, type: 3}
+  - {fileID: 8300000, guid: 8f0e7268d8de5c74a9888e89def656c9, type: 3}
+  - {fileID: 8300000, guid: a4bee21b88eebfb409e39475c987d45c, type: 3}
+  softBlips:
+  - {fileID: 8300000, guid: 803a8e3bead024e45940b1a692b70050, type: 3}
+  - {fileID: 8300000, guid: 18b94a3bfb4e9944bb4f61f0aa85b4cc, type: 3}
+  - {fileID: 8300000, guid: c58106e482dcd87439079b7730de231d, type: 3}
+  - {fileID: 8300000, guid: 2da5b596d74c90b4d93f9c2a42d8bf14, type: 3}
+  - {fileID: 8300000, guid: b4873356a863157409349f7d36034b1f, type: 3}
 --- !u!114 &1133218099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20214,6 +20198,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 983475081}
         m_MethodName: SetActive
         m_Mode: 6
@@ -21269,6 +21264,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 609193411}
         m_MethodName: SetActive
         m_Mode: 6
@@ -21680,6 +21686,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1962245972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21802,6 +21819,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1335142553}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -22062,6 +22090,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &2032708183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22184,6 +22223,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1603892557}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -23395,6 +23445,17 @@ MonoBehaviour:
       - m_Target: {fileID: 1335142553}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1133218098}
+        m_MethodName: PlayUIBlip
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

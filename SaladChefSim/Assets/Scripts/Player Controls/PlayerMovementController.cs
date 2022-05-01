@@ -14,6 +14,7 @@ public class PlayerMovementController : MonoBehaviour
     internal PlayerControls playerControls;
     internal PlayerAnimationManager animationManager;
     internal Vector3 moveVector;
+    internal bool running;
     [HideInInspector]
     public int id = 0;
 
@@ -22,6 +23,7 @@ public class PlayerMovementController : MonoBehaviour
 
     [Header("Player Movement")]
     public float playerSpeed = 100f;
+    public float playerRunSpeed = 200f;
 
     //Initialize Component
     void Awake()
@@ -40,8 +42,16 @@ public class PlayerMovementController : MonoBehaviour
             if (moveVector != Vector3.zero)
             {
 
-                //move player
-                playerRigidbody.velocity = moveVector * playerSpeed * Time.fixedDeltaTime;
+                if (running == true)
+                {
+                    //move player with runspeed
+                    playerRigidbody.velocity = moveVector * playerRunSpeed * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    //move player
+                    playerRigidbody.velocity = moveVector * playerSpeed * Time.fixedDeltaTime;
+                }
 
                 //face direction
                 transform.LookAt(transform.position + moveVector);

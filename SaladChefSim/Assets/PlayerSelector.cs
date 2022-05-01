@@ -28,6 +28,7 @@ public class PlayerSelector : MonoBehaviour
     public GameObject playerOneCharAnchor;
     public GameObject playerTwoCharAnchor;
 
+    public SFXControllerUI sfx;
 
 
     private void Awake()
@@ -39,6 +40,12 @@ public class PlayerSelector : MonoBehaviour
 
     private void Update()
     {
+        //Return on Cancel
+        if(controls.PlayerOneActions.Cancel.WasPressedThisFrame() || controls.PlayerTwoActions.Cancel.WasPressedThisFrame())
+        {
+            sceneManager.ReturnToMenu();
+        }
+
         //player 1
 
         //char select
@@ -56,6 +63,7 @@ public class PlayerSelector : MonoBehaviour
                     //set the correct character active
                     playerOneCharAnchor.transform.GetChild(playerOneIndex - 1).gameObject.SetActive(false);
                     playerOneCharAnchor.transform.GetChild(playerOneIndex).gameObject.SetActive(true);
+                    sfx.PlaySoftUIBlip();
                 }
             }
             else if (controls.PlayerOneActions.Movement.ReadValue<Vector2>().x < 0 && controls.PlayerOneActions.Movement.WasPressedThisFrame())
@@ -67,6 +75,7 @@ public class PlayerSelector : MonoBehaviour
                     //set the correct character active
                     playerOneCharAnchor.transform.GetChild(playerOneIndex + 1).gameObject.SetActive(false);
                     playerOneCharAnchor.transform.GetChild(playerOneIndex).gameObject.SetActive(true);
+                    sfx.PlaySoftUIBlip();
                 }
             }
 
@@ -81,6 +90,7 @@ public class PlayerSelector : MonoBehaviour
                 playerOneIndex = 0;
                 playerOneUserNameUI.gameObject.SetActive(true);
                 playerOneSelected = true;
+                sfx.PlayUIBlip();
             }
         }
         //username select
@@ -99,6 +109,7 @@ public class PlayerSelector : MonoBehaviour
                 {
                     playerOneIndex = 0;
                 }
+                sfx.PlaySoftUIBlip();
             }
             else if (controls.PlayerOneActions.Movement.ReadValue<Vector2>().y < 0 && controls.PlayerOneActions.Movement.WasPressedThisFrame())
             {
@@ -110,6 +121,7 @@ public class PlayerSelector : MonoBehaviour
                 {
                     playerOneIndex = alpha.Length - 1;
                 }
+                sfx.PlaySoftUIBlip();
             }
 
             //updatUI
@@ -119,14 +131,15 @@ public class PlayerSelector : MonoBehaviour
             {
                 playerOneName += alpha[playerOneIndex];
 
-                if(playerOneName.Length == 3)
+                sfx.PlayUIBlip();
+
+                if (playerOneName.Length == 3)
                 {
                     CharacterSelectionController.playerOneInitials = playerOneName;
                     //activate check mark when ready
                     playerOneUserNameUI.transform.GetChild(0).gameObject.SetActive(true);
                     //clear controls
                     playerOnePrompt.text = "";
-
 
                     //start if both are ready
                     if (playerTwoName.Length == 3)
@@ -158,6 +171,7 @@ public class PlayerSelector : MonoBehaviour
                     //set the correct character active
                     playerTwoCharAnchor.transform.GetChild(playerTwoIndex - 1).gameObject.SetActive(false);
                     playerTwoCharAnchor.transform.GetChild(playerTwoIndex).gameObject.SetActive(true);
+                    sfx.PlaySoftUIBlip();
                 }
             }
             else if (controls.PlayerTwoActions.Movement.ReadValue<Vector2>().x < 0 && controls.PlayerTwoActions.Movement.WasPressedThisFrame())
@@ -169,6 +183,7 @@ public class PlayerSelector : MonoBehaviour
                     //set the correct character active
                     playerTwoCharAnchor.transform.GetChild(playerTwoIndex + 1).gameObject.SetActive(false);
                     playerTwoCharAnchor.transform.GetChild(playerTwoIndex).gameObject.SetActive(true);
+                    sfx.PlaySoftUIBlip();
                 }
             }
 
@@ -181,6 +196,7 @@ public class PlayerSelector : MonoBehaviour
                 playerTwoIndex = 0;
                 playerTwoUserNameUI.gameObject.SetActive(true);
                 playerTwoSelected = true;
+                sfx.PlayUIBlip();
             }
         }
         //username select
@@ -191,6 +207,7 @@ public class PlayerSelector : MonoBehaviour
             {
                 playerTwoPromptOne.SetActive(false);
                 playerTwoPromptTwo.SetActive(true);
+                sfx.PlaySoftUIBlip();
             }
 
             if (controls.PlayerTwoActions.Movement.ReadValue<Vector2>().y > 0 && controls.PlayerTwoActions.Movement.WasPressedThisFrame())
@@ -203,6 +220,7 @@ public class PlayerSelector : MonoBehaviour
                 {
                     playerTwoIndex = 0;
                 }
+                sfx.PlaySoftUIBlip();
             }
             else if (controls.PlayerTwoActions.Movement.ReadValue<Vector2>().y < 0 && controls.PlayerTwoActions.Movement.WasPressedThisFrame())
             {
@@ -214,6 +232,7 @@ public class PlayerSelector : MonoBehaviour
                 {
                     playerTwoIndex = alpha.Length - 1;
                 }
+                sfx.PlaySoftUIBlip();
             }
 
             //updatUI
@@ -223,6 +242,8 @@ public class PlayerSelector : MonoBehaviour
             {
                 playerTwoName += alpha[playerTwoIndex];
 
+                sfx.PlayUIBlip();
+
                 if (playerTwoName.Length == 3)
                 {
                     CharacterSelectionController.playerTwoInitials = playerTwoName;
@@ -231,9 +252,8 @@ public class PlayerSelector : MonoBehaviour
                     //disable prompts
                     playerTwoPromptOne.transform.parent.gameObject.SetActive(false);
 
-
                     //start if both are ready
-                    if(playerOneName.Length == 3)
+                    if (playerOneName.Length == 3)
                     {
                         sceneManager.BeginLoadGame();
                     }

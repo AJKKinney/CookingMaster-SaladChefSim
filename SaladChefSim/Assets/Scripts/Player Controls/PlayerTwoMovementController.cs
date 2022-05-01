@@ -16,5 +16,14 @@ public class PlayerTwoMovementController : PlayerMovementController
     void Update()
     {
         moveVector = new Vector3(playerControls.PlayerTwoActions.Movement.ReadValue<Vector2>().x, 0, playerControls.PlayerTwoActions.Movement.ReadValue<Vector2>().y);
+
+        if (playerControls.PlayerTwoActions.Cancel.ReadValue<float>() > 0)
+        {
+            running = true;
+        }
+        else
+        {
+            running = false;
+        }
     }
 }

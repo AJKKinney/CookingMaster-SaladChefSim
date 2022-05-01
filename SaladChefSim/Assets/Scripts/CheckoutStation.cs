@@ -21,7 +21,7 @@ public class CheckoutStation : MonoBehaviour
     public int[] desiredMixture;
     private CustomerGenerator customerGenerator;
     private PickupGenerator pickupGenerator;
-
+    private bool paused = false;
 
     [Header("Customers")]
     readonly private float baseWaitTime = 35f;
@@ -52,52 +52,55 @@ public class CheckoutStation : MonoBehaviour
 
     private void Update()
     {
-        //timing for new customers
-        if(timer > 0)
+        if (paused == false)
         {
-            timer -= Time.deltaTime * timeMod;
-            //update HUD for Customer
-            if (customerWaiting == true)
+            //timing for new customers
+            if (timer > 0)
             {
-                customerUI.SetTimerUI(timer, customerMaxWaitTime);
+                timer -= Time.deltaTime * timeMod;
+                //update HUD for Customer
+                if (customerWaiting == true)
+                {
+                    customerUI.SetTimerUI(timer, customerMaxWaitTime);
+                }
             }
-        }
-        else if(customerWaiting == true)
-        {
-            customerGFX.SetActive(false);
-            customerWaiting = false;
-
-            //reduce points for both players
-            ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver, 1);
-            ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver, 2);
-
-            if (timeMod > 1f)
+            else if (customerWaiting == true)
             {
-                timeMod = 1f;
-                //reduce points for both players for angry customer
-                ScoreTracker.instance.AddPoints(ScoreTracker.instance.additionalForAngry, 1);
-                ScoreTracker.instance.AddPoints(ScoreTracker.instance.additionalForAngry, 2);
+                customerGFX.SetActive(false);
+                customerWaiting = false;
+
+                //reduce points for both players
+                ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver, 1);
+                ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver, 2);
+
+                if (timeMod > 1f)
+                {
+                    timeMod = 1f;
+                    //reduce points for both players for angry customer
+                    ScoreTracker.instance.AddPoints(ScoreTracker.instance.additionalForAngry, 1);
+                    ScoreTracker.instance.AddPoints(ScoreTracker.instance.additionalForAngry, 2);
+                }
+
+                timer = Random.Range(timerLow, timerHigh);
             }
-
-            timer = Random.Range(timerLow, timerHigh);
-        }
-        else
-        {
-            //generate customer desires and set time to wait based on number of desired veggies
-            int numVeg;
-            desiredMixture = customerGenerator.GenerateCustomer(out numVeg);
-            customerUI.UpdateDesires(desiredMixture);
-
-            //play new customer sfx if needed
-            if (customerGFX.activeSelf != true)
+            else
             {
-                SFXAudioController.instance.PlaySFX(newCustomerSFX);
-                customerGFX.SetActive(true);
-            }
+                //generate customer desires and set time to wait based on number of desired veggies
+                int numVeg;
+                desiredMixture = customerGenerator.GenerateCustomer(out numVeg);
+                customerUI.UpdateDesires(desiredMixture);
 
-            customerWaiting = true;
-            timer = baseWaitTime + timePerVeg * numVeg;
-            customerMaxWaitTime = timer;
+                //play new customer sfx if needed
+                if (customerGFX.activeSelf != true)
+                {
+                    SFXAudioController.instance.PlaySFX(newCustomerSFX);
+                    customerGFX.SetActive(true);
+                }
+
+                customerWaiting = true;
+                timer = baseWaitTime + timePerVeg * numVeg;
+                customerMaxWaitTime = timer;
+            }
         }
     }
 
@@ -188,5 +191,17 @@ public class CheckoutStation : MonoBehaviour
             timeMod += customerWaitPenalty;
         }
         return false;
+    }
+
+    //suspends the update loop
+    public void Pause()
+    {
+        paused = true;
+    }
+
+    //resumes the update loop
+    public void Resume()
+    {
+        paused = false;
     }
 }

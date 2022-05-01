@@ -15,6 +15,8 @@ public class GameTimer : MonoBehaviour
     public float playerTwoTimeRemaining;
 
     public bool started = false;
+    private bool paused = false;
+
     [Header("Players")]
     public PlayerMovementController playerOne;
     public PlayerMovementController playerTwo;
@@ -44,13 +46,16 @@ public class GameTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Tick();
-
-        //started bool added to prevent from constantly firing
-        if (playerOneTimeRemaining > 0 && playerOneTimeRemaining < gameLength && started == false)
+        if (paused == false)
         {
-            UnlockPlayers();
-            started = true;
+            Tick();
+
+            //started bool added to prevent from constantly firing
+            if (playerOneTimeRemaining > 0 && playerOneTimeRemaining < gameLength && started == false)
+            {
+                UnlockPlayers();
+                started = true;
+            }
         }
     }
 
@@ -104,5 +109,20 @@ public class GameTimer : MonoBehaviour
     {
         playerOne.locked = false;
         playerTwo.locked = false;
+    }
+
+    //stops the timers
+    public void Pause()
+    {
+        paused = true;
+        LockPlayer(1);
+        LockPlayer(2);
+    }
+
+    //resumes the timers
+    public void Unpause()
+    {
+        paused = false;
+        UnlockPlayers();
     }
 }
