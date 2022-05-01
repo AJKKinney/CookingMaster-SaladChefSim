@@ -31,4 +31,14 @@ public class PlayerAnimationManager : MonoBehaviour
     {
         armsAnimator.ClearHand();
     }
+
+    public void AddSalad()
+    {
+        armsAnimator.CarrySalad();
+    }
+
+    public void RemoveSalad()
+    {
+        armsAnimator.ClearSalad();
+    }
 }

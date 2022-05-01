@@ -11,7 +11,7 @@ public class ArmsAnimator : MonoBehaviour
     private GameObject leftHandGrip;
 
     public GameObject[] veggies;
-
+    public GameObject salad;
 
 
 
@@ -72,5 +72,28 @@ public class ArmsAnimator : MonoBehaviour
             Destroy(rightHandGrip);
             LowerRightArm();
         }
+    }
+
+    public void CarrySalad()
+    {
+        salad.SetActive(true);
+
+        if(rightHandGrip != null)
+        {
+            Destroy(rightHandGrip);
+        }
+        if (leftHandGrip != null)
+        {
+            Destroy(rightHandGrip);
+        }
+        RaiseRightArm();
+    }
+
+    public void ClearSalad()
+    {
+
+        salad.SetActive(false);
+        LowerRightArm();
+
     }
 }

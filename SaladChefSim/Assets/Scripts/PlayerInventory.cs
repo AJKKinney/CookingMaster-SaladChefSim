@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAnimationManager))]
 //Player Inventory controls picking up and dropping of vegetables, combinations, and salads.
 public class PlayerInventory : MonoBehaviour
 {
 
     public Vegetable[] carriedVegetables = new Vegetable[2];
     public Mixture carriedMixture;
+    private PlayerAnimationManager animManager;
+
+    private void Awake()
+    {
+        animManager = GetComponent<PlayerAnimationManager>();
+    }
 
     //add a veggie to your inventory
     public bool AddVegetable(Vegetable veggie)
@@ -74,6 +81,10 @@ public class PlayerInventory : MonoBehaviour
             {
                 Debug.Log("Picked Up " + mixture.GetName());
                 carriedMixture = mixture;
+
+                // add salad to hands
+                animManager.AddSalad();
+
                 return true;
             }
         }
@@ -85,5 +96,7 @@ public class PlayerInventory : MonoBehaviour
     public void DropMixture()
     {
         carriedMixture = null;
+
+        animManager.RemoveSalad();
     }
 }
