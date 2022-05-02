@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+[RequireComponent(typeof(GameSFXController))]
 public class ScoreTracker : MonoBehaviour
 {
 
     public static ScoreTracker instance;
+
+    private GameSFXController sfx;
 
     private int playerOneScore = 0;
     private int playerTwoScore = 0;
@@ -28,6 +31,7 @@ public class ScoreTracker : MonoBehaviour
     void Awake()
     {
         instance = this;
+        sfx = GetComponent<GameSFXController>();
     }
 
     //Gets The Score of a Player
@@ -55,6 +59,35 @@ public class ScoreTracker : MonoBehaviour
         else if (player == 2)
         {
             playerTwoScore += points;
+        }
+
+        //play sfx
+        if (points >= 0)
+        {
+            sfx.PlayScoreSFX();
+        }
+        else
+        {
+            sfx.PlayPenaltySFX();
+        }
+
+        UpdateUI();
+    }
+
+    //overload adds points for both players to the scoreboard
+    public void AddPoints(int points)
+    {
+            playerOneScore += points;
+            playerTwoScore += points;
+
+        //play sfx
+        if (points >= 0)
+        {
+            sfx.PlayScoreSFX();
+        }
+        else
+        {
+            sfx.PlayPenaltySFX();
         }
 
         UpdateUI();

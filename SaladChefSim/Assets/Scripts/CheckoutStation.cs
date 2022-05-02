@@ -68,27 +68,33 @@ public class CheckoutStation : MonoBehaviour
             else if (customerWaiting == true && timeMod <= 1f)
             {
                 customerGFX.SetActive(false);
-                customerWaiting = false;
-
                 //reduce points for both players
-                ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver, 1);
-                ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver, 2);
+                ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver);
 
                 timer = Random.Range(timerLow, timerHigh);
+
+                customerWaiting = false;
             }
             else if(customerWaiting == true && timeMod > 1f)
             {
-                timeMod = 1f;
+
                 //reduce points for  players for angry customer
-                if (playersWrong[0])
+                if(playersWrong[0] && playersWrong[1])
+                {
+                    ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver * 2);
+                }
+                else if (playersWrong[0])
                 {
                     ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver * 2, 1);
                 }
-
-                if (playersWrong[1])
+                else if (playersWrong[1])
                 {
                     ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver * 2, 2);
                 }
+
+                timeMod = 1f;
+                ResetWrong();
+                customerWaiting = false;
             }
             else
             {
@@ -178,6 +184,7 @@ public class CheckoutStation : MonoBehaviour
 
             //award points to the player who served the food
             ScoreTracker.instance.AddPoints(ScoreTracker.instance.basePointsAwarded, player);
+            ResetWrong();
 
             //powerup if >%70 time remaining
             if (timer >= customerMaxWaitTime * 0.7f)
@@ -194,6 +201,9 @@ public class CheckoutStation : MonoBehaviour
 
             //Play Angry SFX
             SFXAudioController.instance.PlaySFX(angrySFX);
+
+            //update wrong player for penalty
+            RegisterPlayerWrong(player);
 
             timeMod += customerWaitPenalty;
         }
