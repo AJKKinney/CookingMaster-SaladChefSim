@@ -8,6 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovementController))]
 [RequireComponent(typeof(PlayerInventory))]
 [RequireComponent(typeof(PlayerInventoryHUD))]
+[RequireComponent(typeof(PlayerChoppingHUD))]
 public class CarrierController : MonoBehaviour
 {
     [Header("Pick Up Settings")]
@@ -22,6 +23,8 @@ public class CarrierController : MonoBehaviour
     private PlayerInventory inventory;
     //shows carried item info to the player
     private PlayerInventoryHUD inventoryHUD;
+    //shows chopped veggie timer
+    private PlayerChoppingHUD choppingHUD;
 
 
     void Awake()
@@ -30,6 +33,7 @@ public class CarrierController : MonoBehaviour
         inventory = GetComponent<PlayerInventory>();
         controller = GetComponent<PlayerMovementController>();
         inventoryHUD = GetComponent<PlayerInventoryHUD>();
+        choppingHUD = GetComponent<PlayerChoppingHUD>();
     }
 
     void Start()
@@ -147,6 +151,7 @@ public class CarrierController : MonoBehaviour
                 {
                     if (ChopVegetable(choppingLocation))
                     {
+                        choppingHUD.ChopVeggies(inventory.carriedVegetables[0].chopTime);
                         inventory.RemoveVegetable();
                         inventoryHUD.RemoveIcon();
                     }

@@ -20,6 +20,6 @@ public class RedCabbage : Vegetable
     //get the vegetables vegetableID
     public override int GetID()
     {
-        return (int)Ingredients.Lettuce;
+        return (int)Ingredients.RedCabbage;
     }
 }

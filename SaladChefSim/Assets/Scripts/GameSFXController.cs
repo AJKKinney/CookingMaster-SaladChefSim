@@ -8,7 +8,6 @@ public class GameSFXController : MonoBehaviour
     [Header("Score SFX")]
     public AudioClip gainPoint;
     public AudioClip losePoint;
-    
 
     //plays the gain point sfx
     public void PlayScoreSFX()

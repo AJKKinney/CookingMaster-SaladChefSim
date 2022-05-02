@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
+
+[RequireComponent(typeof(SaladGFXController))]
 // this class controls the animation state of the arms and the items they carry
 public class ArmsAnimator : MonoBehaviour
 {
@@ -12,11 +14,20 @@ public class ArmsAnimator : MonoBehaviour
 
     [Header("Objects to Carry")]
     public GameObject[] veggies;
-    public GameObject salad;
+
 
     //stores the objects in hand to be referenced later
     private GameObject rightHandGrip;
     private GameObject leftHandGrip;
+    //controls salad display
+    private SaladGFXController saladGFX;
+
+
+    private void Awake()
+    {
+        //initialize
+        saladGFX = GetComponent<SaladGFXController>();
+    }
 
 
     //locks left arm to rotation
@@ -25,11 +36,13 @@ public class ArmsAnimator : MonoBehaviour
         leftArmConstraint.weight = 1;
     }
 
+
     //locks right arm to rotation
     public void RaiseRightArm()
     {
         rightArmConstraint.weight = 1;
     }
+
 
     //allows regular animation of left arm
     public void LowerLeftArm()
@@ -37,11 +50,13 @@ public class ArmsAnimator : MonoBehaviour
         leftArmConstraint.weight = 0;
     }
 
+
     //allows regular animation of right arm
     public void LowerRightArm()
     {
         rightArmConstraint.weight = 0;
     }
+
 
     //Adds the vegetable specified to the hand specified
     public void AddToHand(int vegetableIndex, bool rightHand)
@@ -60,6 +75,7 @@ public class ArmsAnimator : MonoBehaviour
         }
 
     }
+
 
     //removes objects from hands in FIFO order
     public void ClearHand()
@@ -81,10 +97,11 @@ public class ArmsAnimator : MonoBehaviour
         }
     }
 
+
     //Adds a salad to the players hand
-    public void CarrySalad()
+    public void CarrySalad(Mixture mixture)
     {
-        salad.SetActive(true);
+        saladGFX.displaySalad(mixture);
 
         if(rightHandGrip != null)
         {
@@ -97,11 +114,12 @@ public class ArmsAnimator : MonoBehaviour
         RaiseRightArm();
     }
 
+
     //removes the salad from the players hand
     public void ClearSalad()
     {
 
-        salad.SetActive(false);
+        saladGFX.HideSalad();
         LowerRightArm();
 
     }

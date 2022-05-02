@@ -3,10 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//If you have time refactor this code for fewer lines - 5/2/2022 AK
 
 //Controls the player character selection and name entry
 public class PlayerSelector : MonoBehaviour
 {
+    public TextMeshProUGUI playerOneUserNameUI;
+    public TextMeshProUGUI playerOnePrompt;
+    public TextMeshProUGUI playerTwoUserNameUI;
+    public GameObject[] characterPrefabs;
+    public GameObject playerOneIndicator;
+    public GameObject playerTwoPromptOne;
+    public GameObject playerTwoPromptTwo;
+    public GameObject playerTwoIndicator;
+    public GameObject playerOneCharAnchor;
+    public GameObject playerTwoCharAnchor;
+    public GameSceneManager sceneManager;
+    public SFXControllerUI sfx;
+
     private PlayerControls controls;
     private int playerOneIndex = 0;
     private bool playerOneSelected;
@@ -14,22 +28,8 @@ public class PlayerSelector : MonoBehaviour
     private int playerTwoIndex = 0;
     private bool playerTwoSelected;
     private string playerTwoName = "";
-    private char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-
-    public GameObject[] characterPrefabs;
-
-    public GameObject playerOneIndicator;
-    public TextMeshProUGUI playerOneUserNameUI;
-    public TextMeshProUGUI playerOnePrompt;
-    public GameObject playerTwoIndicator;
-    public TextMeshProUGUI playerTwoUserNameUI;
-    public GameObject playerTwoPromptOne;
-    public GameObject playerTwoPromptTwo;
-    public GameSceneManager sceneManager;
-    public GameObject playerOneCharAnchor;
-    public GameObject playerTwoCharAnchor;
-
-    public SFXControllerUI sfx;
+    
+    readonly private char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
 
     private void Awake()

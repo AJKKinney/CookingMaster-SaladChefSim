@@ -125,12 +125,12 @@ public class CheckoutStation : MonoBehaviour
         }
         else
         {
-            customerGFX.SetActive(false);
             //reduce points for both players
             ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver);
         }
 
         //reset customer
+        customerGFX.SetActive(false);
         timeMod = 1f;
         ResetWrong();
         customerWaiting = false;
@@ -146,8 +146,7 @@ public class CheckoutStation : MonoBehaviour
     private void NewCustomer()
     {
         //generate desires
-        int numVeg;
-        desiredMixture = customerGenerator.GenerateCustomerOrder(out numVeg);
+        desiredMixture = customerGenerator.GenerateCustomerOrder(out int numVeg);
         customerUI.UpdateDesires(desiredMixture);
 
         //play new customer sfx if needed
@@ -159,7 +158,7 @@ public class CheckoutStation : MonoBehaviour
 
         //setup timer
         customerWaiting = true;
-        customerMaxWaitTime = baseWaitTime + timePerVeg * numVeg;
+        customerMaxWaitTime = baseWaitTime + (timePerVeg * numVeg);
 
         Debug.Log("A new Customer Arrived");
 

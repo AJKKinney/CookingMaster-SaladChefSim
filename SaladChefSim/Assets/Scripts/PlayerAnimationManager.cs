@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerAnimationManager : MonoBehaviour
 {
     public Animator playerAnimator;
+    [HideInInspector]
     public ArmsAnimator armsAnimator;
 
 
@@ -40,9 +41,9 @@ public class PlayerAnimationManager : MonoBehaviour
 
 
     //adds a salad to the players hand
-    public void AddSalad()
+    public void AddSalad(Mixture mixture)
     {
-        armsAnimator.CarrySalad();
+        armsAnimator.CarrySalad(mixture);
     }
 
 

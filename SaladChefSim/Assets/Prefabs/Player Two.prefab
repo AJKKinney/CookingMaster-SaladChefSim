@@ -4769,6 +4769,7 @@ GameObject:
   - component: {fileID: 68681811}
   - component: {fileID: 68681815}
   - component: {fileID: 68681816}
+  - component: {fileID: 4487171012509019641}
   m_Layer: 0
   m_Name: Player Two
   m_TagString: Untagged
@@ -4833,10 +4834,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a9b431da7c4ad46847bc3970172815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  locked: 0
   playerSpeed: 250
   playerRunSpeed: 375
+  id: 0
+  locked: 0
 --- !u!114 &68681810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4900,6 +4901,28 @@ MonoBehaviour:
   - {fileID: 7798529748455943208, guid: 46c078b2c124b344dbb3ab0244fc1d0a, type: 3}
   - {fileID: 8694207785285029148, guid: 10121406884e8234b94488c58959afb5, type: 3}
   - {fileID: 1470678781125852716, guid: 1d526515648ca4542b9d84308f60cbd3, type: 3}
+--- !u!114 &4487171012509019641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875199843240695252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44de7afcdccb07f409c99cde026cc2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickUp:
+  - {fileID: 8300000, guid: ad906c66eaddac84da5e9ddfa59c2905, type: 3}
+  - {fileID: 8300000, guid: 4eab4f6f9c66ba746bb840f1eaa52197, type: 3}
+  - {fileID: 8300000, guid: 4c353780d53dff24e99e7e5bcba55d3f, type: 3}
+  - {fileID: 8300000, guid: 4c9d5fd8c4638264b81e5f52247a2927, type: 3}
+  putDown:
+  - {fileID: 8300000, guid: e99ecc1d0b685b0488597832fb3f3b71, type: 3}
+  - {fileID: 8300000, guid: e176738e4ff1ca64899f2e70c59e2c69, type: 3}
+  - {fileID: 8300000, guid: f161355484af27a40950a1cacda5a647, type: 3}
+  - {fileID: 8300000, guid: f5f365a084fc2bd40a28efe27d5857d1, type: 3}
 --- !u!1 &5875199843972505233
 GameObject:
   m_ObjectHideFlags: 0
@@ -4994,7 +5017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8107b454f8849444099fb6b613a7b20a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimManager: {fileID: 68681811}
+  playerAnimationManager: {fileID: 68681811}
 --- !u!1001 &2939192915527098897
 PrefabInstance:
   m_ObjectHideFlags: 0

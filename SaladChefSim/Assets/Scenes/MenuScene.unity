@@ -2514,7 +2514,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1603892561}
+      - m_Target: {fileID: 1133218099}
         m_MethodName: DeleteSaveData
         m_Mode: 1
         m_Arguments:
@@ -19489,7 +19489,6 @@ GameObject:
   - component: {fileID: 1603892558}
   - component: {fileID: 1603892560}
   - component: {fileID: 1603892559}
-  - component: {fileID: 1603892561}
   m_Layer: 5
   m_Name: Settings Panel
   m_TagString: Untagged
@@ -19557,18 +19556,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603892557}
   m_CullTransparentMesh: 0
---- !u!114 &1603892561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1603892557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54b87037d5676c141a88a8dad9a9311c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1630391763
 GameObject:
   m_ObjectHideFlags: 0

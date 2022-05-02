@@ -981,6 +981,7 @@ GameObject:
   - component: {fileID: 3314187222303889951}
   - component: {fileID: 3183569426118697193}
   - component: {fileID: 4509459997810765548}
+  - component: {fileID: 4210266144531624246}
   m_Layer: 0
   m_Name: Toast Guy
   m_TagString: Untagged
@@ -1077,7 +1078,26 @@ MonoBehaviour:
   - {fileID: 5623339287290720024, guid: c3218601a93ff0d4490ecb7c789dbd60, type: 3}
   - {fileID: 4362282709140937132, guid: 75df2b3da39266d42b76dec88a0faabb, type: 3}
   - {fileID: 3263511619687992735, guid: 457388395f57cc040b4eec0ff1425e9a, type: 3}
-  salad: {fileID: 1718070799628808895}
+--- !u!114 &4210266144531624246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8805846208189099289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8c88e1c54ce4e48bfbc2e43602ed28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saladGFXParent: {fileID: 1718070799628808895}
+  veggies:
+  - {fileID: 6578669555905067590}
+  - {fileID: 7717463562979278037}
+  - {fileID: 603915101846390427}
+  - {fileID: 8169486033868749832}
+  - {fileID: 6975134132120827808}
+  - {fileID: 7939987693606649181}
 --- !u!1 &9076474965919033058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1227,42 @@ GameObject:
 --- !u!4 &1718070799628808888 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9214490046733155582, guid: 2b3821daecc8adf4cb48682f9feb79b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7509648657784655430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6578669555905067590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3709700218138899456, guid: 2b3821daecc8adf4cb48682f9feb79b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7509648657784655430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7717463562979278037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 229210319176086163, guid: 2b3821daecc8adf4cb48682f9feb79b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7509648657784655430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &603915101846390427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6941780128753125597, guid: 2b3821daecc8adf4cb48682f9feb79b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7509648657784655430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8169486033868749832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1830847290386723406, guid: 2b3821daecc8adf4cb48682f9feb79b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7509648657784655430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6975134132120827808 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 647117719237163494, guid: 2b3821daecc8adf4cb48682f9feb79b6,
+    type: 3}
+  m_PrefabInstance: {fileID: 7509648657784655430}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7939987693606649181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 434352275312079643, guid: 2b3821daecc8adf4cb48682f9feb79b6,
     type: 3}
   m_PrefabInstance: {fileID: 7509648657784655430}
   m_PrefabAsset: {fileID: 0}

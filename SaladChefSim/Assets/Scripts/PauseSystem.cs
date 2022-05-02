@@ -35,7 +35,7 @@ public class PauseSystem : MonoBehaviour
     }
 
     //pause the game
-    private void TogglePause(bool pause)
+    public void TogglePause(bool pause)
     {
         if (pause)
         {

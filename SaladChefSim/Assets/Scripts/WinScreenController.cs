@@ -32,8 +32,17 @@ public class WinScreenController : MonoBehaviour
     public AudioClip endGameSound;
     public AudioClip endMusic;
 
+    private PauseSystem pauseSystem;
+
+    private void Awake()
+    {
+        pauseSystem = GetComponent<PauseSystem>();
+    }
+
     public void DeclareWinner()
     {
+        pauseSystem.TogglePause(true);
+
         //Play End Game Sound
         SFXAudioController.instance.PlaySFX(endGameSound);
         //Play Win Screen Music

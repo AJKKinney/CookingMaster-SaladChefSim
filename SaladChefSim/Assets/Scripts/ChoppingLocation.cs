@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(SaladGFXController))]
+
 //Controls the chopping of vegetables and creation of mixtures
 public class ChoppingLocation : MonoBehaviour
 {
@@ -16,6 +19,14 @@ public class ChoppingLocation : MonoBehaviour
     public Vegetable choppingVegetable;
     //the timer for chopping vegetables
     private float chopTime;
+    private SaladGFXController saladGFX;
+
+
+    private void Awake()
+    {
+        //initialize
+        saladGFX = GetComponent<SaladGFXController>();
+    }
 
 
     void Update()
@@ -39,8 +50,11 @@ public class ChoppingLocation : MonoBehaviour
                 Debug.Log("Added " + choppingVegetable.GetName() + " to the " + currentMixture.GetName() + " on the Cutting Board.");
                 currentMixture.AddVeggie(choppingVegetable);
             }
-            choppingVegetable = null;
+
+            //display gfx
+            saladGFX.displaySalad(currentMixture);
             owner.locked = false;
+            choppingVegetable = null;
         }
     }
 
@@ -63,6 +77,7 @@ public class ChoppingLocation : MonoBehaviour
     //removes the mixture stored at the chopping location
     public void RemoveMixture()
     {
+        saladGFX.HideSalad();
         currentMixture = null;
     }
 
@@ -70,6 +85,7 @@ public class ChoppingLocation : MonoBehaviour
     //adds a mixture to the chopping location
     public void AddMixture(Mixture mixture)
     {
+        saladGFX.displaySalad(mixture);
         currentMixture = mixture;
     }
 }

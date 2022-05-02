@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerAnimationManager))]
+[RequireComponent(typeof(InteractionSFXController))]
 
 //Player Inventory controls picking up and dropping of vegetables, combinations, and salads.
 public class PlayerInventory : MonoBehaviour
@@ -10,12 +11,19 @@ public class PlayerInventory : MonoBehaviour
 
     public Vegetable[] carriedVegetables = new Vegetable[2];
     public Mixture carriedMixture;
+
     private PlayerAnimationManager animManager;
+    private InteractionSFXController sfx;
+    private SaladGFXController saladGFX;
+
 
     private void Awake()
     {
         animManager = GetComponent<PlayerAnimationManager>();
+        sfx = GetComponent<InteractionSFXController>();
+        saladGFX = GetComponent<SaladGFXController>();
     }
+
 
     //add a veggie to your inventory
     public bool AddVegetable(Vegetable veggie)
@@ -28,6 +36,9 @@ public class PlayerInventory : MonoBehaviour
                 {
                     Debug.Log("Picked up " + veggie.GetName());
                     carriedVegetables[i] = veggie;
+
+                    //play sfx
+                    sfx.PlayPickUpSFX();
 
                     return true;
                 }
@@ -44,6 +55,7 @@ public class PlayerInventory : MonoBehaviour
         return false;
     }
 
+
     //remove a veggie from your inventory
     //FIFO
     public bool RemoveVegetable()
@@ -57,6 +69,8 @@ public class PlayerInventory : MonoBehaviour
                 if (carriedVegetables[i] != null)
                 {
                     dropped = true;
+                    //play sfx
+                    sfx.PlayPutDownSFX();
                 }
             }
             else
@@ -73,6 +87,7 @@ public class PlayerInventory : MonoBehaviour
         return dropped;
     }
 
+
     //picks up a mixture if not already carrying veggies
     public bool AddMixture(Mixture mixture)
     {
@@ -82,9 +97,12 @@ public class PlayerInventory : MonoBehaviour
             {
                 Debug.Log("Picked Up " + mixture.GetName());
                 carriedMixture = mixture;
-
                 // add salad to hands
-                animManager.AddSalad();
+                animManager.AddSalad(mixture);
+
+
+                //play sfx
+                sfx.PlayPickUpSFX();
 
                 return true;
             }
@@ -93,10 +111,14 @@ public class PlayerInventory : MonoBehaviour
         return false;
     }
 
+
     //removes the carried mixture
     public void RemoveMixture()
     {
         carriedMixture = null;
+
+        //play sfx
+        sfx.PlayPutDownSFX();
 
         animManager.RemoveSalad();
     }
