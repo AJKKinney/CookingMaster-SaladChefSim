@@ -22,6 +22,7 @@ public class TimerUI : MonoBehaviour
     private bool winner = false;
     private bool counting = true;
 
+
     //Create Coundown Numbers
     void Awake()
     {
@@ -33,12 +34,14 @@ public class TimerUI : MonoBehaviour
         winScreen = GetComponent<WinScreenController>();
     }
 
+
     //set start time
     public void Start()
     {
         playerOneTimer.text = Mathf.CeilToInt(GameTimer.instance.gameLength).ToString();
         playerTwoTimer.text = Mathf.CeilToInt(GameTimer.instance.gameLength).ToString();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -58,6 +61,7 @@ public class TimerUI : MonoBehaviour
             }
         }
     }
+
 
     void UITick()
     {
@@ -90,6 +94,7 @@ public class TimerUI : MonoBehaviour
             playerTwoTimer.text = timeRemaining.ToString();
         }
     }
+
 
     //updates countdown sequence
     private void UpdateCountdownUI(int countdown)

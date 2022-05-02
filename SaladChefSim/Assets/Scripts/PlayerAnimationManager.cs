@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 //Use With playerMovementController to animate player
 public class PlayerAnimationManager : MonoBehaviour
 {
     public Animator playerAnimator;
     public ArmsAnimator armsAnimator;
 
+
+    //sets the walkspeed variable and scales playback speed 
     public void SetWalkSpeed(float speed)
     {
         playerAnimator.SetFloat("MoveSpeed", speed);
@@ -21,22 +24,29 @@ public class PlayerAnimationManager : MonoBehaviour
         }
     }
 
+
+    //adds vegetables to the players hand
     public void AddVeggie(int vegIndex, bool rightHand)
     {
         armsAnimator.AddToHand(vegIndex, rightHand);
     }
 
 
+    //removes vegetables from the players hand
     public void RemoveVeggie()
     {
         armsAnimator.ClearHand();
     }
 
+
+    //adds a salad to the players hand
     public void AddSalad()
     {
         armsAnimator.CarrySalad();
     }
 
+
+    //removes a salad from the players hand
     public void RemoveSalad()
     {
         armsAnimator.ClearSalad();

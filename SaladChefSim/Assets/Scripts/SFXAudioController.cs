@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
+
+//singleton you attach to the sfx source to play sfx to it
 public class SFXAudioController : MonoBehaviour
 {
-    private AudioSource sfxSource;
     public static SFXAudioController instance;
 
+    private AudioSource sfxSource;
 
     void Awake()
     {

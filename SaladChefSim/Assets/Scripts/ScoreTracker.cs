@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//When you Have time break this class into single responsibility classes - 5/2/2022
+
 [RequireComponent(typeof(GameSFXController))]
+
+//Tracks the players scores and updates the ui
+
 public class ScoreTracker : MonoBehaviour
 {
 
     public static ScoreTracker instance;
 
-    private GameSFXController sfx;
-
-    private int playerOneScore = 0;
-    private int playerTwoScore = 0;
-
     [Header("Scoreboard")]
-
     public TextMeshProUGUI playerOneScoreboard;
     public TextMeshProUGUI playerTwoScoreboard;
 
@@ -26,6 +25,9 @@ public class ScoreTracker : MonoBehaviour
     readonly public int penaltyForLeaver = -25;
     readonly public float penaltyForWrongSalad = 0.2f;
 
+    private int playerOneScore = 0;
+    private int playerTwoScore = 0;
+    private GameSFXController sfx;
 
     //initialization
     void Awake()

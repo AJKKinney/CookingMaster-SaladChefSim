@@ -2,9 +2,11 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+
+//Saves the persistent data to the players computer in binary format for secure saving
 public static class SaveSystem
 {
-
+    //saves data to the save file
     public static void SaveData(int[] highscores, string[] names)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -18,6 +20,8 @@ public static class SaveSystem
         stream.Close();
     }
 
+
+    //loads data from the save file
     public static SaveData LoadData()
     {
         string path = "";
@@ -43,12 +47,14 @@ public static class SaveSystem
         }
     }
 
-    //Creates a new data file
+
+    //Creates a new save file
     public static void CreateNewSave()
     {
         DeleteSave();
         SaveData(new int[10], new string[10]);
     }
+
 
     //Deletes save data file
     public static void DeleteSave()
@@ -61,6 +67,7 @@ public static class SaveSystem
             File.Delete(path);
         }
     }
+
 
     //checks to see if a save file exists passes out path with overload
     public static bool CheckForSave()
@@ -79,6 +86,7 @@ public static class SaveSystem
         }
     }
 
+    //passes out path
     public static bool CheckForSave(out string path)
     {
         path = Application.persistentDataPath + "/savedata.sss";

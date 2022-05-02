@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+//Controls the customer order UI
 public class CustomerUI : MonoBehaviour
 {
     public Canvas customerHUD;
@@ -33,26 +33,20 @@ public class CustomerUI : MonoBehaviour
             }
         }
     }
+
+
     //updates timer display
     public void SetTimerUI(float timer, float maxtime)
     {
         timerUI.value = timer / maxtime;
     }
 
-    public void DisableCustomerUI()
-    {
-        customerHUD.gameObject.SetActive(false);
-    }
-    
-    //create desire icons
 
+    //create desire icons for desired veggies
     public void CreateDesire(int veggie)
     {
         GameObject newIcon = GameObject.Instantiate(new GameObject(), desiresPanel.transform);
         Image icon = newIcon.AddComponent<Image>();
         icon.transform.localScale *= iconScale;
-        icon.sprite = vegetableIMGs[veggie].sprite;
-        icon.color = vegetableIMGs[veggie].color;
-        icon.name = vegetableIMGs[veggie].name;
     }
 }

@@ -3,41 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
+// this class controls the animation state of the arms and the items they carry
 public class ArmsAnimator : MonoBehaviour
 {
+    [Header("Arm Constraints")]
     public MultiRotationConstraint rightArmConstraint;
     public MultiRotationConstraint leftArmConstraint;
-    private GameObject rightHandGrip;
-    private GameObject leftHandGrip;
 
+    [Header("Objects to Carry")]
     public GameObject[] veggies;
     public GameObject salad;
 
+    //stores the objects in hand to be referenced later
+    private GameObject rightHandGrip;
+    private GameObject leftHandGrip;
 
 
+    //locks left arm to rotation
     public void RaiseLeftArm()
     {
         leftArmConstraint.weight = 1;
     }
 
+    //locks right arm to rotation
     public void RaiseRightArm()
     {
         rightArmConstraint.weight = 1;
     }
 
-    public void LowerRightArm()
-    {
-        rightArmConstraint.weight = 0;
-    }
-
+    //allows regular animation of left arm
     public void LowerLeftArm()
     {
         leftArmConstraint.weight = 0;
     }
 
+    //allows regular animation of right arm
+    public void LowerRightArm()
+    {
+        rightArmConstraint.weight = 0;
+    }
+
+    //Adds the vegetable specified to the hand specified
     public void AddToHand(int vegetableIndex, bool rightHand)
     {
-
         if (rightHand == true)
         {
             rightHandGrip = Instantiate(veggies[vegetableIndex], rightArmConstraint.data.sourceObjects[0].transform, true);
@@ -53,8 +61,7 @@ public class ArmsAnimator : MonoBehaviour
 
     }
 
-
-    //removes objects from hands
+    //removes objects from hands in FIFO order
     public void ClearHand()
     {
         if(leftHandGrip != null)
@@ -74,6 +81,7 @@ public class ArmsAnimator : MonoBehaviour
         }
     }
 
+    //Adds a salad to the players hand
     public void CarrySalad()
     {
         salad.SetActive(true);
@@ -89,6 +97,7 @@ public class ArmsAnimator : MonoBehaviour
         RaiseRightArm();
     }
 
+    //removes the salad from the players hand
     public void ClearSalad()
     {
 

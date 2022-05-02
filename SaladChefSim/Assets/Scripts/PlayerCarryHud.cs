@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 //Set position to follow player without rotation.
 public class PlayerCarryHud : MonoBehaviour
 {

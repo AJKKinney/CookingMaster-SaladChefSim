@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 //Controls the player character selection and name entry
 public class PlayerSelector : MonoBehaviour
 {

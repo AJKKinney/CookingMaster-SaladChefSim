@@ -7,19 +7,24 @@ public class GameTimer : MonoBehaviour
 {
 
     static public GameTimer instance;
+
+    [Header("Timer")]
     public float gameLength = 120f;
-    readonly private float countdown = 3f;
+
+    [Header("Players")]
+    public PlayerMovementController playerOne;
+    public PlayerMovementController playerTwo;
+
+    [HideInInspector]
+    public bool started = false;
     [HideInInspector]
     public float playerOneTimeRemaining;
     [HideInInspector]
     public float playerTwoTimeRemaining;
 
-    public bool started = false;
     private bool paused = false;
 
-    [Header("Players")]
-    public PlayerMovementController playerOne;
-    public PlayerMovementController playerTwo;
+    readonly private float countdown = 3f;
 
     // Start is called before the first frame update
     void Awake()

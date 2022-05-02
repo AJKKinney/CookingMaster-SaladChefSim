@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Holds settings info
+//Holds settings info between scenes
 public class AudioSettingsController : MonoBehaviour
 {
     public static float musicVolume = 1;

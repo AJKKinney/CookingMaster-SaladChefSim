@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//The class that stores data for salad mixtures
 public class Mixture
 {
     public readonly List<Vegetable> vegetables = new List<Vegetable>();
@@ -12,7 +13,7 @@ public class Mixture
         this.AddVeggie(veggie);
     }
 
-    //generate Mixture name
+    //generates a Mixture name as a string
     public virtual string GetName()
     {
         string mixtureName = "";
@@ -31,6 +32,7 @@ public class Mixture
         return mixtureName;
     }
 
+    //Adds a vegetable to the mixture
     public void AddVeggie(Vegetable veggie)
     {
         vegetables.Add(veggie);

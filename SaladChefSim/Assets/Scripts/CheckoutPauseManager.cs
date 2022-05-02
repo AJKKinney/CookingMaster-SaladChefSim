@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckoutManager : MonoBehaviour
+//controls the checkout pausing
+public class CheckoutPauseManager : MonoBehaviour
 {
     public CheckoutStation[] checkouts;
 
@@ -14,7 +15,6 @@ public class CheckoutManager : MonoBehaviour
 
 
     //calls the pause function on all checkout stations in the children
-
     public void PauseCheckouts()
     {
         for(int i = 0; i < checkouts.Length; i++)
@@ -24,7 +24,6 @@ public class CheckoutManager : MonoBehaviour
     }
 
     //calls the resume function on all checkout stations in the children
-
     public void ResumeCheckouts()
     {
         for (int i = 0; i < checkouts.Length; i++)

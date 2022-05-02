@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerInventory))]
 [RequireComponent(typeof(PlayerAnimationManager))]
+
+//displays icons of all carried vegetables
+
 public class PlayerInventoryHUD : MonoBehaviour
 {
     public GameObject playerInventoryHUD;

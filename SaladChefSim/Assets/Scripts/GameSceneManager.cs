@@ -14,14 +14,14 @@ public class GameSceneManager : MonoBehaviour
     public Slider loadingBar;
     public GameObject prompt;
 
+    //handles press to start
     private bool awaitInput = false;
+    //stores load data
+    private AsyncOperation loading;
 
-    AsyncOperation loading;
 
-    // Update is called once per frame
     void Update()
     {
-
         //loading update loop
         if (loading != null)
         {
@@ -46,7 +46,8 @@ public class GameSceneManager : MonoBehaviour
         }
     }
 
-    //starts the async loading operation
+
+    //starts the async loading operation to start the game
     public void BeginLoadGame()
     {
         loadingPanel.gameObject.SetActive(true);
@@ -60,6 +61,7 @@ public class GameSceneManager : MonoBehaviour
         loading.allowSceneActivation = false;
     }
 
+
     //Quits games
     public void QuitGame()
     {
@@ -67,6 +69,8 @@ public class GameSceneManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
     }
 
+
+    //returns to the menu
     public void ReturnToMenu()
     {
         loadingPanel.gameObject.SetActive(true);

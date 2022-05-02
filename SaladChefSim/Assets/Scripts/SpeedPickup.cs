@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Gives a speed boost when a player walks over the gameobject
 public class SpeedPickup : Pickup
 {
 
     private float timer;
     readonly private float duration = 10f;
     private PlayerMovementController targetPlayer;
+
 
     private void Update()
     {
@@ -25,6 +27,7 @@ public class SpeedPickup : Pickup
             }
         }
     }
+
 
     internal override void PickUp(PlayerMovementController player)
     {

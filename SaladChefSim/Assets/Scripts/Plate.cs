@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+//Stores a Vegetable to be used later by a player
 public class Plate : MonoBehaviour
 {
-
+    //the stored vegetable
     [HideInInspector]
     public Vegetable currentVegetable;
 
+    //displays the stored vegetables
     private PlateGFXController gfxController;
 
     //GetGFXUpdater
@@ -16,6 +18,7 @@ public class Plate : MonoBehaviour
     {
         gfxController = GetComponentInChildren<PlateGFXController>();
     }
+
 
     //stores a vegetable on the plate
     //returns true if the plate is available for storage
@@ -32,6 +35,8 @@ public class Plate : MonoBehaviour
         return false;
     }
 
+
+    //Removes a vegetable from the plate
     public void RemoveVegetable()
     {
         currentVegetable = null;

@@ -8,8 +8,11 @@ public class CustomerGenerator : MonoBehaviour
     readonly private int minIngredients = 2;
     readonly private int maxIngredients = 6;
 
-    public int[] GenerateCustomer(out int numberOfVegetables)
+
+    //generates a new customer order returns int[] representing the order
+    public int[] GenerateCustomerOrder(out int numberOfVegetables)
     {
+        //int array representing number of veggies in each type index = vegetableID, value = numberOfVeggies
         int[] customerOrder = new int[6];
 
         int numIngredients = Mathf.RoundToInt(Random.Range(minIngredients, maxIngredients));
@@ -22,15 +25,5 @@ public class CustomerGenerator : MonoBehaviour
 
         numberOfVegetables = numIngredients;
         return customerOrder;
-    }
-
-    public enum Ingredients
-    {
-        Lettuce,
-        Spinach,
-        MiniCorn,
-        Tomato,
-        RedCabbage,
-        Radish
     }
 }

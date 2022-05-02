@@ -2,17 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Controls the chopping of vegetables and creation of mixtures
 public class ChoppingLocation : MonoBehaviour
 {
-    [HideInInspector]
-    public Mixture currentMixture;
-    [HideInInspector]
-    public Vegetable choppingVegetable;
-    private float chopTime;
-
+    [Header("Team")]
     public PlayerMovementController owner;
 
-    // Update is called once per frame
+    //the currently stored mixture at the chopping location
+    [HideInInspector]
+    public Mixture currentMixture;
+    //the vegetable currently being chopped
+    [HideInInspector]
+    public Vegetable choppingVegetable;
+    //the timer for chopping vegetables
+    private float chopTime;
+
+
     void Update()
     {
         //Chop Timer
@@ -39,7 +44,8 @@ public class ChoppingLocation : MonoBehaviour
         }
     }
 
-    //Start Chopping Vegetable
+
+    //Starts Chopping the Vegetable passed into the function
     public bool ChopVegetable(Vegetable veggie)
     {
         if (chopTime <= 0)
@@ -53,12 +59,16 @@ public class ChoppingLocation : MonoBehaviour
         return false;
     }
 
+
+    //removes the mixture stored at the chopping location
     public void RemoveMixture()
     {
         currentMixture = null;
     }
 
-    public void PlaceMixture(Mixture mixture)
+
+    //adds a mixture to the chopping location
+    public void AddMixture(Mixture mixture)
     {
         currentMixture = mixture;
     }

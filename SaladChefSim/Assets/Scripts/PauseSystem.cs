@@ -8,7 +8,7 @@ public class PauseSystem : MonoBehaviour
 {
     public GameObject pauseScreen;
 
-    public CheckoutManager checkoutManager;
+    public CheckoutPauseManager checkoutManager;
 
     private PlayerControls controls;
     private GameTimer timer;

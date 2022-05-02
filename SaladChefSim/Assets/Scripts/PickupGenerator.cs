@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//pickup generator generates pickups in the specified zone
 public class PickupGenerator : MonoBehaviour
 {
     [Header("Pickup Zone")]

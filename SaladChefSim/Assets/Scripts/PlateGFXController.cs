@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 //makes the vegetable stored on the plate visible
 public class PlateGFXController : MonoBehaviour
 {
+    public GameObject[] veggieGFX;
+
+    //stores the reference to the GFX gameobject
     [HideInInspector]
     public GameObject currentVeggie;
-    public GameObject[] veggieGFX;
+
 
     //updates gfx
     public void UpdateGFX(int VeggieID)
@@ -19,6 +23,7 @@ public class PlateGFXController : MonoBehaviour
 
         currentVeggie = Instantiate(veggieGFX[VeggieID], transform);
     }
+
 
     //overload clears gfx
     public void UpdateGFX()

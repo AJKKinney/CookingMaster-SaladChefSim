@@ -7,19 +7,26 @@ public class Vegetable : MonoBehaviour
 {
     public float chopTime { get; set; } = 1;
 
-
+    //return the vegetables name as a string
     public virtual string GetName()
     {
         return "Vegetable";
     }
 
+    //get the vegetables vegetableID
     public virtual int GetID()
     {
         return -1;
     }
 
-    public virtual Vegetable Grab()
+    //the vegetable types
+    public enum Ingredients
     {
-        return this;
+        Lettuce,
+        Spinach,
+        MiniCorn,
+        Tomato,
+        RedCabbage,
+        Radish
     }
 }

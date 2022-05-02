@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Singleton for referencing, loading and saving highscore data.
+
+//Simple Singleton for referencing, loading and saving highscore data.
 public class HighscoreManager : MonoBehaviour
 {
     public static HighscoreManager instance;
 
-
-
+    [HideInInspector]
     public int[] highscores = new int[10];
+    [HideInInspector]
     public string[] names = new string[10];
 
 
     void Awake()
     {
+        //initialize the singleton
         if (instance == null)
         {
             instance = this;
@@ -27,20 +29,13 @@ public class HighscoreManager : MonoBehaviour
 
     private void Start()
     {
-        //Load Highscores
-
+        //Load saved data
         highscores = SaveSystem.LoadData().highscores;
         names = SaveSystem.LoadData().names;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    //returns true if the score is in the top 10 scores.
-    public bool CheckHighscore(int scoreToCheck, string usrName)
+    //returns true and sets a new highscore if the score is in the top 10 scores.
+    public bool CheckNewHighscore(int scoreToCheck, string usrName)
     {
         for(int i = 0; i < highscores.Length; i++)
         {
@@ -54,7 +49,7 @@ public class HighscoreManager : MonoBehaviour
         return false;
     }
 
-    // puts the score into the correct highscore place and  shifts the lower highscores removing the lowest
+    // puts the score into the correct highscore place and shifts the lower highscores removing the lowest
     private void TakePlace(int score, int place, string usrName)
     {
         for(int i = highscores.Length - 1; i >= place; i--)

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//enables and disables the delete button if there is a save file
 public class DeleteEnabler : MonoBehaviour
 {
-
     private Button deleteButton;
 
     private void Awake()

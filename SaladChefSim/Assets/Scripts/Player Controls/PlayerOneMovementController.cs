@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//The Movement Controller for Player One
 public class PlayerOneMovementController : PlayerMovementController
 {
     //Enable Player 1 Input
@@ -12,11 +13,12 @@ public class PlayerOneMovementController : PlayerMovementController
         this.id = 1;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //update movement input
         moveVector = new Vector3(playerControls.PlayerOneActions.Movement.ReadValue<Vector2>().x, 0, playerControls.PlayerOneActions.Movement.ReadValue<Vector2>().y);
 
+        //check for running
         if (playerControls.PlayerOneActions.Cancel.ReadValue<float>() > 0)
         {
             running = true;

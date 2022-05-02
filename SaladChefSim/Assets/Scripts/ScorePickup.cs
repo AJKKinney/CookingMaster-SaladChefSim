@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//Gives points when a player walks over the gameobject
 public class ScorePickup : Pickup
 {
 
@@ -9,8 +11,6 @@ public class ScorePickup : Pickup
 
     internal override void PickUp(PlayerMovementController player)
     {
-
-
         base.PickUp(player);
         //increase score
         ScoreTracker.instance.AddPoints(score, player.id);
