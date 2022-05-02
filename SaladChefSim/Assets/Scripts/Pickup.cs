@@ -8,6 +8,7 @@ public class Pickup : MonoBehaviour
     public GameObject powerupGFX;
     PlayerMovementController pickerUpper;
     internal bool pickedUp = false;
+    public int owner;
 
     //initialize
     private void Awake()
@@ -21,7 +22,10 @@ public class Pickup : MonoBehaviour
 
         if(other.TryGetComponent<PlayerMovementController>(out pickerUpper))
         {
-            PickUp(pickerUpper);
+            if (pickerUpper.id == owner)
+            {
+                PickUp(pickerUpper);
+            }
         }
     }
 

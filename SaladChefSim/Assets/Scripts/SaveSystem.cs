@@ -20,9 +20,9 @@ public static class SaveSystem
 
     public static SaveData LoadData()
     {
-        string path = Application.persistentDataPath + "/savedata.sss";
+        string path = "";
 
-        if(File.Exists(path))
+        if(CheckForSave(out path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
@@ -36,7 +36,6 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogWarning("Save data could not be found in " + path);
             CreateNewSave();
             Debug.Log("Created new save data in " + path);
             //recursively grab new save
@@ -54,16 +53,45 @@ public static class SaveSystem
     //Deletes save data file
     public static void DeleteSave()
     {
+
+        string path = "";
+
+        if (CheckForSave(out path))
+        {
+            File.Delete(path);
+        }
+    }
+
+    //checks to see if a save file exists passes out path with overload
+    public static bool CheckForSave()
+    {
         string path = Application.persistentDataPath + "/savedata.sss";
 
         if (File.Exists(path))
         {
-            File.Delete(path);
+            return true;
         }
+
         else
         {
             Debug.LogWarning("Save data could not be found in " + path);
+            return false;
         }
     }
 
+    public static bool CheckForSave(out string path)
+    {
+        path = Application.persistentDataPath + "/savedata.sss";
+
+        if (File.Exists(path))
+        {
+            return true;
+        }
+
+        else
+        {
+            Debug.LogWarning("Save data could not be found in " + path);
+            return false;
+        }
+    }
 }

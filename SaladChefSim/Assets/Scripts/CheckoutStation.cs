@@ -22,6 +22,7 @@ public class CheckoutStation : MonoBehaviour
     private CustomerGenerator customerGenerator;
     private PickupGenerator pickupGenerator;
     private bool paused = false;
+    private bool[] playersWrong = new bool[2]  { false, false };
 
     [Header("Customers")]
     readonly private float baseWaitTime = 35f;
@@ -64,7 +65,7 @@ public class CheckoutStation : MonoBehaviour
                     customerUI.SetTimerUI(timer, customerMaxWaitTime);
                 }
             }
-            else if (customerWaiting == true)
+            else if (customerWaiting == true && timeMod <= 1f)
             {
                 customerGFX.SetActive(false);
                 customerWaiting = false;
@@ -73,15 +74,21 @@ public class CheckoutStation : MonoBehaviour
                 ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver, 1);
                 ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver, 2);
 
-                if (timeMod > 1f)
+                timer = Random.Range(timerLow, timerHigh);
+            }
+            else if(customerWaiting == true && timeMod > 1f)
+            {
+                timeMod = 1f;
+                //reduce points for  players for angry customer
+                if (playersWrong[0])
                 {
-                    timeMod = 1f;
-                    //reduce points for both players for angry customer
-                    ScoreTracker.instance.AddPoints(ScoreTracker.instance.additionalForAngry, 1);
-                    ScoreTracker.instance.AddPoints(ScoreTracker.instance.additionalForAngry, 2);
+                    ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver * 2, 1);
                 }
 
-                timer = Random.Range(timerLow, timerHigh);
+                if (playersWrong[1])
+                {
+                    ScoreTracker.instance.AddPoints(ScoreTracker.instance.penaltyForLeaver * 2, 2);
+                }
             }
             else
             {
@@ -176,7 +183,7 @@ public class CheckoutStation : MonoBehaviour
             if (timer >= customerMaxWaitTime * 0.7f)
             {
                 Debug.Log("You generated a pickup!");
-                pickupGenerator.GeneratePickup();
+                pickupGenerator.GeneratePickup(player);
                 return true;
             }
         }
@@ -203,5 +210,18 @@ public class CheckoutStation : MonoBehaviour
     public void Resume()
     {
         paused = false;
+    }
+
+    public void RegisterPlayerWrong(int player)
+    {
+        playersWrong[player - 1] = true;
+    }
+
+    public void ResetWrong()
+    {
+        for(int i = 0; i < playersWrong.Length; i++)
+        {
+            playersWrong[i] = false;
+        }
     }
 }

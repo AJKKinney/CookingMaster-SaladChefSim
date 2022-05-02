@@ -10,12 +10,13 @@ public class PickupGenerator : MonoBehaviour
     public Vector3 offset;
 
 
-    public void GeneratePickup()
+    public void GeneratePickup(int owner)
     {
         int randomPickup = Random.Range(0, 3);
         Vector3 randomLocation = transform.position + offset + new Vector3(Random.Range(-size.x / 2, size.x / 2), 0, Random.Range(-size.z / 2, size.z / 2));
 
-        Instantiate(pickups[randomPickup], randomLocation, Quaternion.identity);
+        GameObject pickup = Instantiate(pickups[randomPickup], randomLocation, Quaternion.identity);
+        pickup.GetComponent<Pickup>().owner = owner;
     }
 
     private void OnDrawGizmosSelected()

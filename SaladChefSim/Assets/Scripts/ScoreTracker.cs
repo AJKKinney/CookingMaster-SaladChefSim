@@ -21,7 +21,6 @@ public class ScoreTracker : MonoBehaviour
     readonly public int additionalPerVeg = 10;
     readonly public int penaltyForTossing = -15;
     readonly public int penaltyForLeaver = -25;
-    readonly public int additionalForAngry = -10;
     readonly public float penaltyForWrongSalad = 0.2f;
 
 
