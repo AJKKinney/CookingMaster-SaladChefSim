@@ -3963,7 +3963,7 @@ GameObject:
   - component: {fileID: 691430850}
   - component: {fileID: 691430849}
   m_Layer: 5
-  m_Name: Used Assets Text
+  m_Name: Used Packages Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4007,7 +4007,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Used Assets:
+  m_text: 'Used Packages:
 
     Unity Input System
 

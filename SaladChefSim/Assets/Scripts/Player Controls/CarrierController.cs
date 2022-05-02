@@ -71,7 +71,7 @@ public class CarrierController : MonoBehaviour
                 {
                     inventory.AddVegetable(plate.currentVegetable);
                     inventoryHUD.CreateCarriedIcon(plate.currentVegetable.GetID());
-                    plate.currentVegetable = null;
+                    plate.RemoveVegetable();
                 }
                 else if (inventory.carriedVegetables[0] != null && plate.currentVegetable == null)
                 {
