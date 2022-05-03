@@ -19,7 +19,8 @@ public class PlayerSelector : MonoBehaviour
     public GameObject playerOneCharAnchor;
     public GameObject playerTwoCharAnchor;
     public GameSceneManager sceneManager;
-    public SFXControllerUI sfx;
+    public SFXControllerUI uiSFX;
+    public PlayerSelectionSFXController selectionSFX; 
 
     private PlayerControls controls;
     private int playerOneIndex = 0;
@@ -64,7 +65,7 @@ public class PlayerSelector : MonoBehaviour
                     //set the correct character active
                     playerOneCharAnchor.transform.GetChild(playerOneIndex - 1).gameObject.SetActive(false);
                     playerOneCharAnchor.transform.GetChild(playerOneIndex).gameObject.SetActive(true);
-                    sfx.PlaySoftUIBlip();
+                    uiSFX.PlaySoftUIBlip();
                 }
             }
             else if (controls.PlayerOneActions.Movement.ReadValue<Vector2>().x < 0 && controls.PlayerOneActions.Movement.WasPressedThisFrame())
@@ -76,7 +77,7 @@ public class PlayerSelector : MonoBehaviour
                     //set the correct character active
                     playerOneCharAnchor.transform.GetChild(playerOneIndex + 1).gameObject.SetActive(false);
                     playerOneCharAnchor.transform.GetChild(playerOneIndex).gameObject.SetActive(true);
-                    sfx.PlaySoftUIBlip();
+                    uiSFX.PlaySoftUIBlip();
                 }
             }
 
@@ -88,10 +89,12 @@ public class PlayerSelector : MonoBehaviour
             {
 
                 CharacterSelectionController.chosenCharacterPrefabPlayerOne = characterPrefabs[playerOneIndex];
+                //play character name
+                selectionSFX.PlayCharacterNameSFX(playerOneIndex);
                 playerOneIndex = 0;
                 playerOneUserNameUI.gameObject.SetActive(true);
                 playerOneSelected = true;
-                sfx.PlayUIBlip();
+                uiSFX.PlayUIBlip();
             }
         }
         //username select
@@ -110,7 +113,7 @@ public class PlayerSelector : MonoBehaviour
                 {
                     playerOneIndex = 0;
                 }
-                sfx.PlaySoftUIBlip();
+                uiSFX.PlaySoftUIBlip();
             }
             else if (controls.PlayerOneActions.Movement.ReadValue<Vector2>().y < 0 && controls.PlayerOneActions.Movement.WasPressedThisFrame())
             {
@@ -122,7 +125,7 @@ public class PlayerSelector : MonoBehaviour
                 {
                     playerOneIndex = alpha.Length - 1;
                 }
-                sfx.PlaySoftUIBlip();
+                uiSFX.PlaySoftUIBlip();
             }
 
             //updatUI
@@ -132,7 +135,7 @@ public class PlayerSelector : MonoBehaviour
             {
                 playerOneName += alpha[playerOneIndex];
 
-                sfx.PlayUIBlip();
+                uiSFX.PlayUIBlip();
 
                 if (playerOneName.Length == 3)
                 {
@@ -172,7 +175,7 @@ public class PlayerSelector : MonoBehaviour
                     //set the correct character active
                     playerTwoCharAnchor.transform.GetChild(playerTwoIndex - 1).gameObject.SetActive(false);
                     playerTwoCharAnchor.transform.GetChild(playerTwoIndex).gameObject.SetActive(true);
-                    sfx.PlaySoftUIBlip();
+                    uiSFX.PlaySoftUIBlip();
                 }
             }
             else if (controls.PlayerTwoActions.Movement.ReadValue<Vector2>().x < 0 && controls.PlayerTwoActions.Movement.WasPressedThisFrame())
@@ -184,7 +187,7 @@ public class PlayerSelector : MonoBehaviour
                     //set the correct character active
                     playerTwoCharAnchor.transform.GetChild(playerTwoIndex + 1).gameObject.SetActive(false);
                     playerTwoCharAnchor.transform.GetChild(playerTwoIndex).gameObject.SetActive(true);
-                    sfx.PlaySoftUIBlip();
+                    uiSFX.PlaySoftUIBlip();
                 }
             }
 
@@ -194,10 +197,12 @@ public class PlayerSelector : MonoBehaviour
             if (controls.PlayerTwoActions.Interact.WasPressedThisFrame())
             {
                 CharacterSelectionController.chosenCharacterPrefabPlayerTwo = characterPrefabs[playerTwoIndex];
+                //play character name
+                selectionSFX.PlayCharacterNameSFX(playerTwoIndex);
                 playerTwoIndex = 0;
                 playerTwoUserNameUI.gameObject.SetActive(true);
                 playerTwoSelected = true;
-                sfx.PlayUIBlip();
+                uiSFX.PlayUIBlip();
             }
         }
         //username select
@@ -208,7 +213,7 @@ public class PlayerSelector : MonoBehaviour
             {
                 playerTwoPromptOne.SetActive(false);
                 playerTwoPromptTwo.SetActive(true);
-                sfx.PlaySoftUIBlip();
+                uiSFX.PlaySoftUIBlip();
             }
 
             if (controls.PlayerTwoActions.Movement.ReadValue<Vector2>().y > 0 && controls.PlayerTwoActions.Movement.WasPressedThisFrame())
@@ -221,7 +226,7 @@ public class PlayerSelector : MonoBehaviour
                 {
                     playerTwoIndex = 0;
                 }
-                sfx.PlaySoftUIBlip();
+                uiSFX.PlaySoftUIBlip();
             }
             else if (controls.PlayerTwoActions.Movement.ReadValue<Vector2>().y < 0 && controls.PlayerTwoActions.Movement.WasPressedThisFrame())
             {
@@ -233,7 +238,7 @@ public class PlayerSelector : MonoBehaviour
                 {
                     playerTwoIndex = alpha.Length - 1;
                 }
-                sfx.PlaySoftUIBlip();
+                uiSFX.PlaySoftUIBlip();
             }
 
             //updatUI
@@ -243,7 +248,7 @@ public class PlayerSelector : MonoBehaviour
             {
                 playerTwoName += alpha[playerTwoIndex];
 
-                sfx.PlayUIBlip();
+                uiSFX.PlayUIBlip();
 
                 if (playerTwoName.Length == 3)
                 {
