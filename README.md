@@ -8,20 +8,22 @@ After completing the core game of "Super Salad Savant" the salad chef Sim game t
   1. Simplify Large Classes and Break them up into Single-Responsibility Classes. (e.g. CheckoutStation.cs, CarrierController.cs, WinScreenController.cs)
   2. Add In-Game Tutorial Prompts for Players to learn the game more easily while playing
   3. Add SFX to the UI Elements for when they are moused over
-  4. Animated Text Elements (Title, Flashing Text, Bouncing Text, etc.)
-  5. Text showing score changes above a players head
-  6. Add an animated loading screen icon
-  7. Add Unique SFX for Picking up and putting down plates
-  8. Display the HighScores on the About Page
-  9. Add looping tutorial clips to the How To Play page
-  10. Add Animation for customers approaching the customer counter before placing an order
-  11. Add More Player Characters
-  12. Add Wider Variety of Customers
-  13. Add A Wider Variety of Vegetables
-  14. Add A Stage Select Sceen
-  15. Add New Power-Ups
-  16. Add Unlockable Characters, Stages, and Power-Ups
-  17. Simplify Code Again for Readability and Optimization
+  4. Add Cancelling Actions
+  5. Add Player Colors to Table Areas to Denote Owner
+  6. Animated Text Elements (Title, Flashing Text, Bouncing Text, etc.)
+  7. Text showing score changes above a players head
+  8. Add an animated loading screen icon
+  9. Add Unique SFX for Picking up and putting down plates
+  10. Display the HighScores on the About Page
+  11. Add looping tutorial clips to the How To Play page
+  12. Add Animation for customers approaching the customer counter before placing an order
+  13. Add More Player Characters
+  14. Add Wider Variety of Customers
+  15. Add A Wider Variety of Vegetables
+  16. Add A Stage Select Sceen
+  17. Add New Power-Ups
+  18. Add Unlockable Characters, Stages, and Power-Ups
+  19. Simplify Code Again for Readability and Optimization
 
 Development Plan:
 
