@@ -13,30 +13,29 @@ public class CameraController : MonoBehaviour
     public float maxFocusDistance;
 
     private CinemachineFreeLook vCam;
-    private Transform cameraTarget;
     private Vector3 startPos;
-    private Camera cam;
 
     private void Awake()
     {
         vCam = GetComponent<CinemachineFreeLook>();
-        cameraTarget = vCam.LookAt;
-        startPos = cameraTarget.position;
+        startPos = vCam.Follow.position;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        float distance = Vector3.Distance(focusOne.position, focusTwo.position);
+        float distance = Vector3.Distance(focusOne.position, startPos);
+        float distanceTwo = Vector3.Distance(focusTwo.position, startPos);
+
+        if(distanceTwo > distance)
+        {
+            distance = distanceTwo;
+        }
 
         if(distance <= maxFocusDistance)
         {
             //zoom
             vCam.m_YAxis.Value = Mathf.Lerp(minZoom, maxZoom, distance / maxFocusDistance);
         }
-
-        //center on players
-        Vector3 center = Vector3.Lerp(focusOne.position, focusTwo.position, 0.5f);
-        cameraTarget.position = Vector3.Lerp(center, startPos, distance / maxFocusDistance);
     }
 }
