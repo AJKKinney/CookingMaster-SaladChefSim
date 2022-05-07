@@ -1,6 +1,6 @@
 # CookingMaster-SaladChefSim
 A repository for the salad chef simulator game created by Austen Kinney within 7 days to test their abilities.
-.
+
 
 After Thoughts:
 
