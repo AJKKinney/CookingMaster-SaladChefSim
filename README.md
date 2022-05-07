@@ -2,7 +2,7 @@
 A repository for the salad chef simulator game created by Austen Kinney within 7 days to test their abilities.
 
 
-####After Thoughts:
+#### After Thoughts:
 
 After completing the core game of "Super Salad Savant" the salad chef Sim game there are a number of things I would have done given more time to work on the project:
 
@@ -26,9 +26,9 @@ After completing the core game of "Super Salad Savant" the salad chef Sim game t
   18. Add Unlockable Characters, Stages, and Power-Ups
   19. Simplify Code Again for Readability and Optimization
 
-###Development Plan:
+### Development Plan:
 
-####4/26 Core Gameplay Loop
+#### 4/26 Core Gameplay Loop
 
 - Basic Camera X
 - Co-Op Controls X
@@ -39,7 +39,7 @@ After completing the core game of "Super Salad Savant" the salad chef Sim game t
 - Customers X
 - Timer X
 
-####4/27 Full Rough Prototype
+#### 4/27 Full Rough Prototype
 
 - Menu X
 - Speed & Time Powerups X
@@ -48,7 +48,7 @@ After completing the core game of "Super Salad Savant" the salad chef Sim game t
 - Winner Screen X
 - Basic Tutorial Elements X
 
-####4/28 Graphical Implementation
+#### 4/28 Graphical Implementation
 
 - Model 3D Visual Elements X
 - Rig 3D Elements X
@@ -56,7 +56,7 @@ After completing the core game of "Super Salad Savant" the salad chef Sim game t
 - Animate 3D Elements X
 - Animation Systems X
 
-####4/29 Audio Implementation
+#### 4/29 Audio Implementation
 
 - Record SFX X
 - Clean Up Recordings X
@@ -64,7 +64,7 @@ After completing the core game of "Super Salad Savant" the salad chef Sim game t
 - Audio Systems X
 
 
-####4/30 - 5/2 Polish
+#### 4/30 - 5/2 Polish
 
 - Camera Zoom ** X
 - Customer Variety
@@ -102,4 +102,5 @@ After completing the core game of "Super Salad Savant" the salad chef Sim game t
 - Pause Button *** X
 
 *: Needs to be Finished 
+
 X: Completed and Implemented
